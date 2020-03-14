@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <!-- 若您需要使用Kendo UI Professional，请联系版权人获得合法的授权或许可。 -->
     <!-- Bootstrap css -->
     <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- kendo ui css -->
@@ -31,31 +30,26 @@
     <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
     <!--[if lt IE 9]><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/html5shiv.min.js"></script><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/respond.min.js"></script><![endif]-->
     <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
-    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker-2.0.css" rel="stylesheet">
-    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/moment.min.js"></script>
-    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker.js"></script>
 </head>
 
 <body class="bg-bright3" data-bg-color="bg-bright3">
     <div class="king-page-box">
         <div class="king-container clearfix">
             <nav class="">
-                <div style="overflow:hidden; z-index: inherit;" class="navbar king-horizontal-nav1  f16">
+                <div style="overflow:hidden; z-index: inherit;" class="navbar king-horizontal-nav1 f16">
                     <div class="navbar-container">
                         <div class="navbar-header pull-left">
                             <a class="navbar-brand" href="javascript:;">
                                 <img src="https://magicbox.bk.tencent.com/static_api/v3/bk/images/logo.png" class="logo"> </a>
                         </div>
                         <ul class="nav navbar-nav pull-left m0">
-                            <li ><a href="javascript:void(0);">执行任务</a></li>
-                            <li class="active"><a href="javascript:void(0);">任务记录</a></li>
-                            <li><a href="javascript:void(0);">关于我们</a></li>
+                            <li class="active"><a href="{{ SITE_URL }}tasks">执行任务</a></li>
+                            <li><a href="{{ SITE_URL }}record">任务记录</a></li>
                         </ul>
                         <div class="navbar-header pull-right">
                             <ul class="nav">
                                 <li class="user-info">
                                     <a href="javascript:;">
-                                        <img class="img-rounded" src="https://magicbox.bk.tencent.com/static_api/v3/components/horizontal_nav1/images/avatar.png">
                                         <span>admin</span>
                                     </a>
                                 </li>
@@ -64,59 +58,46 @@
                     </div>
                 </div>
             </nav>
-            <form class="form-vertical p15">
+
+            <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择业务：</label>
-                    <select class="form-control" style="width: 25%;">
+                    <select class="form-control">
                         <option value="业务1">业务1</option>
                         <option value="业务2">业务2</option>
                         <option value="业务3">业务3</option>
                         <option value="业务4">业务4</option>
                     </select>
                 </div>
+            </form>
+            <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
-                    <label>选择用户：</label>
-                    <select class="form-control" style="width: 25%;">
-                        <option value="用户1">用户1</option>
-                        <option value="用户2">用户2</option>
-                        <option value="用户3">用户3</option>
-                        <option value="用户4">用户4</option>
+                    <label>选择脚本：</label>
+                    <select class="form-control">
+                        <option value="脚本1">脚本1</option>
+                        <option value="脚本2">脚本2</option>
+                        <option value="脚本3">脚本3</option>
+                        <option value="脚本4">脚本4</option>
                     </select>
-                </div>
-                <div class="form-group ">
-                    <label>选择作业：</label>
-                    <select class="form-control" style="width: 25%;">
-                        <option value="作业1">作业1</option>
-                        <option value="作业2">作业2</option>
-                        <option value="作业3">作业3</option>
-                        <option value="作业4">作业4</option>
-                    </select>
-                </div>
-                <div class="container-fluid mb0 ">
-                    <div class="row" >
-                        <label>选择日期：</label>
-                        <input type="text" class="bk-form-input daterangepicker_demo" id="daterangepicker_demo2" placeholder="选择日期" style="width: 25%;">
-                    </div>
-                </div>
-                <div class="form-group ">
-                    <form class="form-vertical p15 fl">
-                        <div class="form-group">
-                            <button type="button" class="king-btn mr10  king-success">查询</button>
-                            <button type="button" class="king-btn king-default ">取消</button>
-                        </div>
-                    </form>
                 </div>
             </form>
+            <form class="form-vertical p15 " style="width: 30%;">
+                <div class="form-group">
+                    <button type="button" class="king-btn mr10  king-success">执行</button>
+                    <button type="button" class="king-btn king-default ">取消</button>
+                </div>
+            </form>
+
             <table class="bk-table has-table-hover">
                 <thead>
                     <tr>
-                        <th style="width:80px;">业务</th>
-                        <th style="width:15%;">用户</th>
-                        <th>任务</th>
-                        <th>机器数</th>
-                        <th>状态</th>
-                        <th>参数</th>
-                        <th>详情</th>
+                        <th style="width:80px;">序号</th>
+                        <th style="width:15%;">IP</th>
+                        <th>操作系统</th>
+                        <th>操作任务</th>
+                        <th>操作结果</th>
+                        <th>操作时间</th>
+                        <th>操作者</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -140,14 +121,8 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
 </body>
-<script type="text/javascript">
-    // 选择日期范围
-            $('#daterangepicker_demo2').daterangepicker({
-                locale: {
-                    "format": 'YYYY/MM/DD'
-                },
-                autoApply: true
-            });
-</script>
+
 </html>

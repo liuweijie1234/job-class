@@ -6,5 +6,6 @@ from . import views
 
 urlpatterns = (
     url(r'^$', views.tasks),
-    url(r'^dev-guide/$', views.record)
+    url(r'^tasks/$', views.tasks),
+    url(r'^record/$', views.record)
 )

@@ -29,12 +29,12 @@ def get_env_or_raise(key):
 # 应用 ID
 APP_CODE = 'job-class'
 # 应用用于调用云 API 的 Secret
-SECRET_KEY = 'f07c215c-bee2-42ab-8434-2ccbd2fece56'
+SECRET_KEY = 'ab784530-398f-4a75-819a-4fdf63dfddea'
 
 # SaaS运行版本，如非必要请勿修改
 RUN_VER = 'open'
 # 蓝鲸SaaS平台URL，例如 http://paas.bking.com
-BK_URL = 'http://dpaas.ce.bktencent.com'
+BK_URL = 'http://paasce-51.bktencent.com'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(

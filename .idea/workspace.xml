@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d82b72a8-cf36-4485-bffe-b314e08af222" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/prod.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/prod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/stag.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/stag.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../liuwjtest/.idea/liuwjtest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../liuwjtest/.idea/liuwjtest.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +12,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="liuwjtest/invalid/Django" />
+    </ignored-facets>
   </component>
   <component name="ProjectId" id="1Z4Ko34YGwyXaEI0dKd1jcBW0mU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -71,10 +72,10 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="320" y="87" key="#Inspections/0.23.1440.797@0.23.1440.797" timestamp="1584166908109" />
-    <state x="184" y="83" width="1071" height="731" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584176151382">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state x="184" y="83" width="1071" height="731" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584238945334">
+      <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="184" y="83" width="1071" height="731" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.797@0.23.1440.797" timestamp="1584166997909" />
+    <state x="184" y="83" width="1071" height="731" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.797@0.23.1440.797" timestamp="1584238945334" />
     <state x="184" y="83" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.800@0.23.1440.800" timestamp="1584176151382" />
     <state width="1419" height="204" key="GridCell.Tab.0.bottom" timestamp="1584176153088">
       <screen x="0" y="23" width="1440" height="800" />

@@ -32,11 +32,11 @@ a1 = result1['data']['info']
 b1 = []
 c1 = []
 d1 = []
-# for i in a:
-#     b1.append(i['host'])
-# for j in b:
-#     c1.append(j['bk_host_innerip'])
-#     d1.append(j['bk_os_name'])
+for i in a1:
+    b1.append(i['host'])
+for j in b1:
+    c1.append(j['bk_host_innerip'])
+    d1.append(j['bk_os_name'])
 
 #查询所有用户信息
 result2 = client.bk_login.get_all_users()
@@ -50,7 +50,7 @@ taskses = SelectScript.objects.all()
 
 def tasks(request):
 
-    return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": a1})
+    return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": c1})
 
 
 def record(request):

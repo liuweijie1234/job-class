@@ -73,8 +73,8 @@
                 <div class="form-group ">
                     <label>选择主机：</label>
                     <select class="form-control">
-                        {% for tasks in taskses %}
-                            <option value="主机">{{ tasks.scriptname }}</option>
+                        {% for ip in ips %}
+                            <option value="主机">{{ ip }}</option>
                         {% endfor %}
                     </select>
                 </div>

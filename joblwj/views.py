@@ -16,27 +16,43 @@ client = get_client_by_user("admin")
 result = client.cc.search_business()
 a = result['data']['info']
 b = []
+c = []
 for i in a:
     b.append(i['bk_biz_name'])
+    c.append(i['bk_biz_id'])
+d = [b, c]
+e = b.index('蓝鲸')
+f = d[1][e]
+
+#根据条件查询主机
+
+kwargs = {"bk_biz_id": f}
+result1 = client.cc.search_host(kwargs)
+a1 = result1['data']['info']['host']
+b1 = []
+c1 = []
+for i in a:
+    b1.append(i['bk_host_innerip'])
+    c1.append(i['bk_os_name'])
 
 #查询所有用户信息
-result1 = client.bk_login.get_all_users()
-a1 = result1['data']
-b1 = []
-for i in a1:
-    b1.append(i['bk_username'])
+result2 = client.bk_login.get_all_users()
+a2 = result2['data']
+b2 = []
+for i in a2:
+    b2.append(i['bk_username'])
 
 taskses = SelectScript.objects.all()
 
 
 def tasks(request):
 
-    return render(request, 'tasks.html', {"taskses": taskses, "business": b})
+    return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips":b1})
 
 
 def record(request):
 
-    return render(request, 'record.html', {"taskses": taskses, "business": b, "users":b1})
+    return render(request, 'record.html', {"taskses": taskses, "business": b, "users":b2})
 
 
 

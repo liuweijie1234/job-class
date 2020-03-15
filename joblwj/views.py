@@ -28,9 +28,9 @@ f = d[1][e]
 
 kwargs = {"bk_biz_id": f}
 result1 = client.cc.search_host(kwargs)
-a1 = result1['data']
-# b1 = []
-# c1 = []
+a1 = result1['data']['info']
+b1 = []
+c1 = []
 # for i in a:
 #     b1.append(i['bk_host_innerip'])
 #     c1.append(i['bk_os_name'])

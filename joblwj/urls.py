@@ -2,7 +2,7 @@
 
 from django.conf.urls import url
 
-from . import views
+from joblwj import views
 
 urlpatterns = (
     url(r'^$', views.tasks),

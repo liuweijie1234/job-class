@@ -63,10 +63,9 @@
                 <div class="form-group ">
                     <label>选择业务：{{ business }}</label>
                     <select class="form-control">
-                        <option value="业务1">{{ business }}</option>
-                        <option value="业务2">业务2</option>
-                        <option value="业务3">业务3</option>
-                        <option value="业务4">业务4</option>
+                        {% for busines in business %}
+                            <option value="业务1">{{ busines }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </form>

@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d82b72a8-cf36-4485-bffe-b314e08af222" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/joblwj/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/joblwj/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/joblwj/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/templates/tasks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../liuwjtest/.idea/liuwjtest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../liuwjtest/.idea/liuwjtest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../liuwjtest/moments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../liuwjtest/moments/models.py" afterDir="false" />
@@ -14,6 +11,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,7 +40,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.test">
     <configuration name="job-class" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="job-class" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -58,6 +62,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="job-class" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -82,21 +112,29 @@
     </state>
     <state x="184" y="83" width="1071" height="731" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.797@0.23.1440.797" timestamp="1584245132901" />
     <state x="184" y="83" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.800@0.23.1440.800" timestamp="1584176151382" />
-    <state width="1419" height="204" key="GridCell.Tab.0.bottom" timestamp="1584176153088">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state width="715" height="203" key="GridCell.Tab.0.bottom" timestamp="1584272184499">
+      <screen x="0" y="23" width="1440" height="797" />
     </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584271823371" />
+    <state width="715" height="203" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1584272184499" />
     <state width="1419" height="204" key="GridCell.Tab.0.bottom/0.23.1440.800@0.23.1440.800" timestamp="1584176153088" />
-    <state width="1419" height="204" key="GridCell.Tab.0.center" timestamp="1584176153087">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state width="715" height="203" key="GridCell.Tab.0.center" timestamp="1584272184498">
+      <screen x="0" y="23" width="1440" height="797" />
     </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1584271823370" />
+    <state width="715" height="203" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1584272184498" />
     <state width="1419" height="204" key="GridCell.Tab.0.center/0.23.1440.800@0.23.1440.800" timestamp="1584176153087" />
-    <state width="1419" height="204" key="GridCell.Tab.0.left" timestamp="1584176153087">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state width="715" height="203" key="GridCell.Tab.0.left" timestamp="1584272184498">
+      <screen x="0" y="23" width="1440" height="797" />
     </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1584271823369" />
+    <state width="715" height="203" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1584272184498" />
     <state width="1419" height="204" key="GridCell.Tab.0.left/0.23.1440.800@0.23.1440.800" timestamp="1584176153087" />
-    <state width="1419" height="204" key="GridCell.Tab.0.right" timestamp="1584176153087">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state width="715" height="203" key="GridCell.Tab.0.right" timestamp="1584272184498">
+      <screen x="0" y="23" width="1440" height="797" />
     </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1584271823370" />
+    <state width="715" height="203" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1584272184498" />
     <state width="1419" height="204" key="GridCell.Tab.0.right/0.23.1440.800@0.23.1440.800" timestamp="1584176153087" />
     <state x="221" y="60" key="SettingsEditor" timestamp="1584257134566">
       <screen x="0" y="23" width="1440" height="797" />

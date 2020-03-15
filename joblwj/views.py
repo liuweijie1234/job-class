@@ -21,8 +21,11 @@ def tasks(request):
                     "bk_biz_name"
                 ]
             }
-    business = client.cc.search_business(kwargs)
-    return render(request, 'tasks.html', {"taskses": taskses, "business": business})
+    result = client.cc.search_business(kwargs)
+    a = result['data']['info']
+    for i in a:
+        print(i['bk_biz_name'], i['bk_biz_id'])
+    return render(request, 'tasks.html', {"taskses": taskses, "business": i['bk_biz_name']})
 
 
 def record(request):

@@ -72,12 +72,11 @@
                     </select>
                 </div>
                 <div class="form-group ">
-                    <label>选择用户：</label>
+                    <label>选择用户：{{ users }}</label>
                     <select class="form-control" style="width: 25%;">
-                        <option value="用户1">用户1</option>
-                        <option value="用户2">用户2</option>
-                        <option value="用户3">用户3</option>
-                        <option value="用户4">用户4</option>
+                        {% for user in users %}
+                            <option value="用户">{{ user }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group ">

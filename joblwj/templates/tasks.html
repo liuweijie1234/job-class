@@ -64,22 +64,30 @@
                     <label>选择业务：</label>
                     <select class="form-control">
                         {% for busines in business %}
-                            <option value="业务1">{{ busines }}</option>
+                            <option value="业务">{{ busines }}</option>
                         {% endfor %}
                     </select>
                 </div>
             </form>
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
-
+                <div class="form-group ">
+                    <label>选择主机：</label>
+                    <select class="form-control">
+                        {% for tasks in taskses %}
+                            <option value="主机">{{ tasks.scriptname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+            <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择脚本：</label>
                     <select class="form-control">
                         {% for tasks in taskses %}
-                            <option value="脚本1">{{ tasks.scriptname }}</option>
+                            <option value="脚本">{{ tasks.scriptname }}</option>
                         {% endfor %}
                     </select>
                 </div>
-
             </form>
             <form class="form-vertical p15 " style="width: 30%;">
                 <div class="form-group">

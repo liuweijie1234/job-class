@@ -36,6 +36,7 @@
 <body class="bg-bright3" data-bg-color="bg-bright3">
     <div class="king-page-box">
         <div class="king-container clearfix">
+
             <nav class="">
                 <div style="overflow:hidden; z-index: inherit;" class="navbar king-horizontal-nav1 f16">
                     <div class="navbar-container">
@@ -72,16 +73,6 @@
             </form>
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
-                    <label>选择主机：</label>
-                    <select class="form-control">
-                        {% for ip in ips %}
-                            <option value="主机">{{ ip }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </form>
-            <form class="form-vertical p15 m5 fl" style="width: 20%;">
-                <div class="form-group ">
                     <label>选择脚本：</label>
                     <select class="form-control">
                         {% for tasks in taskses %}
@@ -90,141 +81,53 @@
                     </select>
                 </div>
             </form>
+
             <table class="bk-table has-table-bordered bk-demo">
                 <thead>
                     <tr>
-                        <th>序号</th>
-                        <th>名称</th>
-                        <th>位置</th>
-                        <th>日期</th>
-                        <th>类型</th>
-                        <th>状态</th>
+                        <th style="width:80px;">序号</th>
+                        <th>IP</th>
+                        <th>操作系统</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Ravi Kumar</td>
-                        <td>India</td>
-                        <td>23/12/2012</td>
-                        <td>Paid</td>
-                        <td>
-                            <span class="fb bk-text-info">Active</span>
-                        </td>
+                        <td>10.0.0.1</td>
+                        <td>linux</td>
                         <td>
                             <a class="bk-icon-button bk-success bk-button-mini" title="成功">
                                 <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">提交</i>
-                            </a>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-edit bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
+                                <i class="bk-text">选择</i>
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Ravi Kumar</td>
-                        <td>India</td>
-                        <td>23/12/2012</td>
-                        <td>Paid</td>
-                        <td>
-                            <span class="fb bk-text-danger">Banned</span>
-                        </td>
+                        <td>10.0.0.2</td>
+                        <td>linux</td>
                         <td>
                             <a class="bk-icon-button bk-success bk-button-mini" title="成功">
                                 <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">提交</i>
-                            </a>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-edit bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
+                                <i class="bk-text">选择</i>
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Ravi Kumar</td>
-                        <td>India</td>
-                        <td>23/12/2012</td>
-                        <td>Paid</td>
-                        <td>
-                            <span class="fb bk-text-success">Active</span>
-                        </td>
+                        <td>10.0.0.2</td>
+                        <td>linux</td>
                         <td>
                             <a class="bk-icon-button bk-success bk-button-mini" title="成功">
                                 <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">提交</i>
-                            </a>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-edit bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Ravi Kumar</td>
-                        <td>India</td>
-                        <td>23/12/2012</td>
-                        <td>Paid</td>
-                        <td>
-                            <span class="fb bk-text-success">Active</span>
-                        </td>
-                        <td>
-                            <a class="bk-icon-button bk-success bk-button-mini" title="成功">
-                                <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">提交</i>
-                            </a>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-edit bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Ravi Kumar</td>
-                        <td>India</td>
-                        <td>23/12/2012</td>
-                        <td>Paid</td>
-                        <td>
-                            <span class="fb bk-text-danger">Banned</span>
-                        </td>
-                        <td>
-                            <a class="bk-icon-button bk-success bk-button-mini" title="成功">
-                                <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">提交</i>
-                            </a>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-edit bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
+                                <i class="bk-text">选择</i>
                             </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+
             <form class="form-vertical p15 " style="width: 30%;">
                 <div class="form-group">
                     <button type="button" class="king-btn mr10  king-success">执行</button>

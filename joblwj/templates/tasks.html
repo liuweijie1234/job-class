@@ -65,8 +65,8 @@
                 <div class="form-group ">
                     <label>选择业务：</label>
                     <select class="form-control">
-                        {% for busines in business %}
-                            <option value="业务">{{ busines }}</option>
+                        {% for biz_name in info %}
+                            <option value="业务">{{ biz_name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -75,8 +75,8 @@
                 <div class="form-group ">
                     <label>选择脚本：</label>
                     <select class="form-control">
-                        {% for tasks in taskses %}
-                            <option value="脚本">{{ tasks.scriptname }}</option>
+                        {% for task in tasks %}
+                            <option value="脚本">{{ task.scriptname }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -90,32 +90,33 @@
                                 <th style="width: 25px">
                                     <input type="checkbox" name="checkall" value="">
                                 </th>
-                                <th style="width: 100px">序号</th>
-<!--                                <th style="width:25%">IP</th>-->
-<!--                                <th style="width:25%">操作系统</th>-->
+                                <th style="width:100px">序号</th>
+                                <th style="width:25%">IP</th>
+                                <th style="width:25%">操作系统</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                        {% for i in index %}
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="">
-                                </td>
-                                <td>{{ i }}</td>
-<!--                                <td>{{ ip }}</td>-->
-<!--                                <td>{{ os }}</td>-->
-                                <td>
-                                    <button class="btn btn-xs btn-primary" title="编辑">
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </button>
-                                    <button class="btn btn-xs btn-danger" title="删除">
-                                        <i class="glyphicon glyphicon-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        {% endfor %}
+{#                        {% for indexs in index %}#}
+                            {% for host_innerip, os_name in data %}
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" value="">
+                                    </td>
+                                    <td>indexs</td>
+                                    <td>{{ host_innerip }}</td>
+                                    <td>{{ os_name }}</td>
+                                    <td>
+                                        <button class="btn btn-xs btn-primary" title="编辑">
+                                            <i class="glyphicon glyphicon-edit"></i>
+                                        </button>
+                                        <button class="btn btn-xs btn-danger" title="删除">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+{#                        {% endfor %}#}
                         </tbody>
                         <tfoot>
                             <tr>

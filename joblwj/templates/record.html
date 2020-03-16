@@ -66,24 +66,24 @@
                 <div class="form-group ">
                     <label>选择业务：</label>
                     <select class="form-control" style="width: 25%;">
-                        {% for busines in business %}
-                            <option value="业务">{{ busines }}</option>
+                        {% for biz_name in info %}
+                            <option value="业务">{{ biz_name }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group ">
                     <label>选择用户：</label>
                     <select class="form-control" style="width: 25%;">
-                        {% for user in users %}
-                            <option value="用户">{{ user }}</option>
+                        {% for username in usernames %}
+                            <option value="用户">{{ username }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group ">
                     <label>选择作业：</label>
                     <select class="form-control" style="width: 25%;">
-                        {% for tasks in taskses %}
-                            <option value="脚本">{{ tasks.scriptname }}</option>
+                        {% for task in tasks %}
+                            <option value="脚本">{{ task.scriptname }}</option>
                         {% endfor %}
                     </select>
                 </div>

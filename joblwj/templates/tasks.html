@@ -84,6 +84,7 @@
 
             <form class="panel">
                 <div class="panel-content">
+                    <p>{{ hosts }}</p>
                     <table class="table table-header-bg table-hover mb0" id="table_demo2">
                         <thead>
                             <tr>
@@ -97,11 +98,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {% for index in hosts.index %}
                             <tr>
                                 <td>
                                     <input type="checkbox" value="">
                                 </td>
-                                <td>1</td>
+                                <td>{{ index }}</td>
                                 <td>10.0.0.1</td>
                                 <td>Linux</td>
                                 <td>
@@ -113,54 +115,7 @@
                                     </button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="">
-                                </td>
-                                <td>2</td>
-                                <td>10.0.0.2</td>
-                                <td>Linux</td>
-                                <td>
-                                    <button class="btn btn-xs btn-primary" title="编辑">
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </button>
-                                    <button class="btn btn-xs btn-danger" title="删除">
-                                        <i class="glyphicon glyphicon-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="">
-                                </td>
-                                <td>3</td>
-                                <td>10.0.0.3</td>
-                                <td>Linux</td>
-                                <td>
-                                    <button class="btn btn-xs btn-primary" title="编辑">
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </button>
-                                    <button class="btn btn-xs btn-danger" title="删除">
-                                        <i class="glyphicon glyphicon-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="">
-                                </td>
-                                <td>4</td>
-                                <td>10.0.0.4</td>
-                                <td>Linux</td>
-                                <td>
-                                    <button class="btn btn-xs btn-primary" title="编辑">
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </button>
-                                    <button class="btn btn-xs btn-danger" title="删除">
-                                        <i class="glyphicon glyphicon-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                         <tfoot>
                             <tr>

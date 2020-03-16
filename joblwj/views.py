@@ -41,7 +41,7 @@ def tasks(request):
         for j in b1:
             c1.append(j['bk_host_innerip'])
             d1.append(j['bk_os_name'])
-        return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": c1})
+        return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": c1, "oss": d1, "hosts": b1})
 
 def record(request):
     taskses = SelectScript.objects.all()

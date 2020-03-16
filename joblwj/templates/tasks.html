@@ -82,51 +82,131 @@
                 </div>
             </form>
 
-            <table class="bk-table has-table-bordered bk-demo">
-                <thead>
-                    <tr>
-                        <th style="width:80px;">序号</th>
-                        <th>IP</th>
-                        <th>操作系统</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>10.0.0.1</td>
-                        <td>linux</td>
-                        <td>
-                            <a class="bk-icon-button bk-success bk-button-mini" title="成功">
-                                <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">选择</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>10.0.0.2</td>
-                        <td>linux</td>
-                        <td>
-                            <a class="bk-icon-button bk-success bk-button-mini" title="成功">
-                                <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">选择</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>10.0.0.2</td>
-                        <td>linux</td>
-                        <td>
-                            <a class="bk-icon-button bk-success bk-button-mini" title="成功">
-                                <i class="bk-icon icon-check-1 bk-icon"></i>
-                                <i class="bk-text">选择</i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="panel panel-default pannel-overflow panel-tables table7_demo">
+                <div class="panel-heading"> <i class="fa fa-list-ul"></i> 变量列表
+                </div>
+                <div class="panel-body panel-search-body">
+                    <a class="king-btn king-radius king-primary" title="添加变量">添加变量</a>
+                    <a class="king-btn king-radius king-default" title="数据导入">数据导入</a>
+                    <a class="king-btn king-radius king-default" title="数据导出">数据导出</a>
+                </div>
+                <div class="panel-content">
+                    <table class="table table-header-bg table-hover mb0" id="table_demo2">
+                        <thead>
+                            <tr>
+                                <th style="width: 25px">
+                                    <input type="checkbox" name="checkall" value="">
+                                </th>
+                                <th style="width: 100px">序号</th>
+                                <th style="width:25%">IP</th>
+                                <th style="width:25%">操作系统</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="">
+                                </td>
+                                <td>1</td>
+                                <td>10.0.0.1</td>
+                                <td>Linux</td>
+                                <td>
+                                    <button class="btn btn-xs btn-primary" title="编辑">
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger" title="删除">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="">
+                                </td>
+                                <td>2</td>
+                                <td>10.0.0.2</td>
+                                <td>Linux</td>
+                                <td>
+                                    <button class="btn btn-xs btn-primary" title="编辑">
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger" title="删除">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="">
+                                </td>
+                                <td>3</td>
+                                <td>10.0.0.3</td>
+                                <td>Linux</td>
+                                <td>
+                                    <button class="btn btn-xs btn-primary" title="编辑">
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger" title="删除">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="">
+                                </td>
+                                <td>4</td>
+                                <td>10.0.0.4</td>
+                                <td>Linux</td>
+                                <td>
+                                    <button class="btn btn-xs btn-primary" title="编辑">
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger" title="删除">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="pull-left">
+                                        <a class="king-btn king-radius king-danger ml10" id="deleteAll" title="删除">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <script type="text/javascript">
+                    $('#table_demo2').find('input[name="checkall"]').click(function(){
+                            var checked = $(this).prop('checked');
+                            $('#table_demo2>tbody input').prop('checked', checked);
+                        });
+                        $('#table_demo2').find(':checkbox').on('click', function(){
+                            if(!this.checked){
+                                $('#table_demo2').find('input[name="checkall"]').prop('checked',false);
+                            }
+                        });
+                        $('#table_demo2').find('.glyphicon-remove').parent('button').click(function(){
+                            if(confirm('确定要删除？')){
+                                $(this).closest('tr').remove();
+                            }
+                        });
+                        $('#deleteAll').click(function(event) {
+                            var records = $('#table_demo2>tbody input:checked').closest('tr');
+                            if (!records.length){
+                                alert('请选择要删除的记录！');
+                                return false;
+                            }
+                            if(confirm('确定要删除？')){
+                                records.remove();
+                            }
+                        });
+                </script>
+            </div>
 
             <form class="form-vertical p15 " style="width: 30%;">
                 <div class="form-group">

@@ -36,12 +36,15 @@ def tasks(request):
         b1 = []
         c1 = []
         d1 = []
+        e1 = []
         for i1 in a1:
             b1.append(i1['host'])
-        for j in b1:
-            c1.append(j['bk_host_innerip'])
-            d1.append(j['bk_os_name'])
-        return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": c1, "oss": d1, "hosts": b1})
+        for index, j1 in enumerate(b1, 1):
+            c1.append(index)
+            d1.append(j1['bk_host_innerip'])
+            e1.append(j1['bk_os_name'])
+
+        return render(request, 'tasks.html', {"taskses": taskses, "business": b, "index": c1, "ip": d1, "os": e1})
 
 def record(request):
     taskses = SelectScript.objects.all()

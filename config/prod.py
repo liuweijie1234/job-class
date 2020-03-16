@@ -28,7 +28,7 @@ DATABASES.update(
             'NAME': 'job-class',  # 数据库名
             'USER': 'root',  # 数据库用户
             'PASSWORD': '0N9LZr3ksu',  # 数据库密码
-            'HOST': '10.0.5.130',  # 数据库主机
+            'HOST': '10.0.5.118',  # 数据库主机
             'PORT': '3306',  # 数据库端口
         },
     }

@@ -45,17 +45,15 @@ b2 = []
 for i in a2:
     b2.append(i['bk_username'])
 
-taskses = SelectScript.objects.all()
-
 
 def tasks(request):
-
+    taskses = SelectScript.objects.all()
     return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": c1})
 
 
 def record(request):
-
-    return render(request, 'record.html', {"taskses": taskses, "business": b, "users":b2})
+    taskses = SelectScript.objects.all()
+    return render(request, 'record.html', {"taskses": taskses, "business": b, "users": b2})
 
 
 

@@ -91,21 +91,21 @@
                                     <input type="checkbox" name="checkall" value="">
                                 </th>
                                 <th style="width: 100px">序号</th>
-                                <th style="width:25%">IP</th>
-                                <th style="width:25%">操作系统</th>
+<!--                                <th style="width:25%">IP</th>-->
+<!--                                <th style="width:25%">操作系统</th>-->
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
+
                         {% for i in index %}
                             <tr>
                                 <td>
                                     <input type="checkbox" value="">
                                 </td>
                                 <td>{{ i }}</td>
-                                {% i -= 1 %}
-                                <td>{{ ip[i] }}</td>
-                                <td>{{ os[i] }}</td>
+<!--                                <td>{{ ip }}</td>-->
+<!--                                <td>{{ os }}</td>-->
                                 <td>
                                     <button class="btn btn-xs btn-primary" title="编辑">
                                         <i class="glyphicon glyphicon-edit"></i>

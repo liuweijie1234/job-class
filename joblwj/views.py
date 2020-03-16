@@ -14,44 +14,45 @@ client = get_client_by_user("admin")
 # kwargs = {"fields": ["bk_biz_id","bk_biz_name"]}
 # 查询业务
 result = client.cc.search_business()
-a = result['data']
-b = a['info']
-c = []
-d = []
-for i in a:
-    c.append(i['bk_biz_name'])
-    d.append(i['bk_biz_id'])
-e = [c, d]
-f = b.index('蓝鲸')
-g = d[1][e]
+if result['data']['info']:
+    a = result['data']['info']
+    b = []
+    c = []
+    for i in a:
+        b.append(i['bk_biz_name'])
+        c.append(i['bk_biz_id'])
+    d = [b, c]
+    e = b.index('蓝鲸')
+    f = d[1][e]
 
 
 def tasks(request):
     taskses = SelectScript.objects.all()
     # 根据条件查询主机
-    kwargs = {"bk_biz_id": g}
+    kwargs = {"bk_biz_id": f}
     result1 = client.cc.search_host(kwargs)
-    a1 = result1['data']['info']
-    b1 = []
-    c1 = []
-    d1 = []
-    for i in a1:
-        b1.append(i['host'])
-    for j in b1:
-        c1.append(j['bk_host_innerip'])
-        d1.append(j['bk_os_name'])
-    return render(request, 'tasks.html', {"taskses": taskses, "business": c, "ips": c1})
-
+    if result1['data']['info']:
+        a1 = result1['data']['info']
+        b1 = []
+        c1 = []
+        d1 = []
+        for i1 in a1:
+            b1.append(i1['host'])
+        for j in b1:
+            c1.append(j['bk_host_innerip'])
+            d1.append(j['bk_os_name'])
+        return render(request, 'tasks.html', {"taskses": taskses, "business": b, "ips": c1})
 
 def record(request):
     taskses = SelectScript.objects.all()
     # 查询所有用户信息
     result2 = client.bk_login.get_all_users()
-    a2 = result2['data']
-    b2 = []
-    for i in a2:
-        b2.append(i['bk_username'])
-    return render(request, 'record.html', {"taskses": taskses, "business": c, "users": b2})
+    if result2['data']:
+        a2 = result2['data']
+        b2 = []
+        for i2 in a2:
+            b2.append(i2['bk_username'])
+        return render(request, 'record.html', {"taskses": taskses, "business": b, "users": b2})
 
 
 

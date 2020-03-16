@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+import time
 from django.shortcuts import render
+from django.http.response import JsonResponse
 from joblwj.models import SelectScript
 from blueking.component.shortcuts import get_client_by_user
 from blueking.component.shortcuts import get_client_by_request
@@ -55,5 +57,9 @@ def record(request):
     taskses = SelectScript.objects.all()
     return render(request, 'record.html', {"taskses": taskses, "business": b, "users": b2})
 
+
+def into_test(request):
+    time.sleep(20)
+    return JsonResponse({'result': True})
 
 

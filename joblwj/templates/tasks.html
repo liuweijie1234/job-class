@@ -156,41 +156,41 @@
                 </script>
                 <script>
                     $(".ele").change(function() {
-                            $.ajax({
-                                url: '/host/update',
-                                type: 'POST',
-                                data:{
-                                    'biz_id': $('.ele').val(),
-                                    'csrfmiddlewaretoken': "{{ csrf_token }}"
-                                },
-                                success: function(response) {
-                                    $('#td').empty();
-                                    if(response.data.length > 0){
-                                       {#alert(response["message"])#}
-                                        $.each(response.data,function (data,ele) {
-                                            $('#td').append("                                <tr>\n" +
-                                            "                                    <td>\n" +
-                                            "                                        <input type=\"checkbox\" value=\"\">\n" +
-                                            "                                    </td>\n" +
-                                            "                                    <td>" + ele.host_id + "</td>\n" +
-                                            "                                    <td class=\"ip\" value=\"\">" + ele.ip + "</td>\n" +
-                                            "                                    <td>" + ele.os + "</td>\n" +
-                                            "                                    <td>\n" +
-                                            "                                        <button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
-                                            "                                            <i class=\"glyphicon glyphicon-edit\"></i>\n" +
-                                            "                                        </button>\n" +
-                                            "                                        <button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
-                                            "                                            <i class=\"glyphicon glyphicon-remove\"></i>\n" +
-                                            "                                        </button>\n" +
-                                            "                                    </td>\n" +
-                                            "                                </tr>")
-                                        })
-                                    }else {
-                                       alert('该业务没有机器')
-                                    }
+                        $.ajax({
+                            url: '/host/update',
+                            type: 'POST',
+                            data:{
+                                'biz_id': $('.ele').val(),
+                                'csrfmiddlewaretoken': "{{ csrf_token }}"
+                            },
+                            success: function(response) {
+                                $('#td').empty();
+                                if(response.data.length > 0){
+                                   {#alert(response["message"])#}
+                                    $.each(response.data,function (data,ele) {
+                                        $('#td').append("                                <tr>\n" +
+                                        "                                    <td>\n" +
+                                        "                                        <input type=\"checkbox\" value=\"\">\n" +
+                                        "                                    </td>\n" +
+                                        "                                    <td>" + ele.host_id + "</td>\n" +
+                                        "                                    <td class=\"ip\" value=\"\">" + ele.ip + "</td>\n" +
+                                        "                                    <td>" + ele.os + "</td>\n" +
+                                        "                                    <td>\n" +
+                                        "                                        <button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
+                                        "                                            <i class=\"glyphicon glyphicon-edit\"></i>\n" +
+                                        "                                        </button>\n" +
+                                        "                                        <button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
+                                        "                                            <i class=\"glyphicon glyphicon-remove\"></i>\n" +
+                                        "                                        </button>\n" +
+                                        "                                    </td>\n" +
+                                        "                                </tr>")
+                                    })
+                                }else {
+                                   alert('该业务没有机器')
                                 }
-                            })
+                            }
                         })
+                    })
                 </script>
             </form>
             <p>{{ test }}</p>
@@ -209,6 +209,9 @@
                             "biz_id":$('.ele').val(),
                             "scriptname":$('.ele1').val(),
                             "ip":$('.ip').val()
+                        },
+                        success: function (response) {
+                            alert(response["message"])
                         }
                     })
                 })

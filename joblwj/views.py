@@ -5,13 +5,12 @@ from django.http.response import JsonResponse, HttpResponse
 from joblwj.models import SelectScript, Doinfo
 from blueking.component.shortcuts import get_client_by_user
 from blueking.component.shortcuts import get_client_by_request
-
+from blueapps.patch.settings_open_saas import SITE_URL
 # 开发框架中通过中间件默认是需要登录态的，如有不需要登录的，可添加装饰器login_exempt
 # 装饰器引入 from blueapps.account.decorators import login_exempt
 
 client = get_client_by_user("admin")
 
-# kwargs = {"fields": ["bk_biz_id","bk_biz_name"]}
 
 # 查询业务
 def get_biz_info():
@@ -41,6 +40,7 @@ def ser_host(biz_id):
                 "cloud_id": host_info['host']["bk_cloud_id"]
             })
     return hosts
+
 
 # ajax 请求业务相应的host,并返回
 def get_host(request):
@@ -73,6 +73,7 @@ def execute_script():
               ]}
     result = client.job.fast_execute_script(kwargs)
     return result
+
 
 def tasks(request):
     tasks = SelectScript.objects.all()

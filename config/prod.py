@@ -11,6 +11,7 @@ RUN_MODE = 'PRODUCT'
 # 只对正式环境日志级别进行配置，可以在这里修改
 LOG_LEVEL = 'ERROR'
 
+STATIC_URL = '/static/'
 # V2
 # import logging
 # logging.getLogger('root').setLevel('INFO')

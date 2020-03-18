@@ -66,8 +66,8 @@
                 <div class="form-group ">
                     <label>选择业务：</label>
                     <select class="form-control" style="width: 25%;">
-                        {% for biz_name in info %}
-                            <option value="业务">{{ biz_name }}</option>
+                        {% for biz_name, biz_id in info %}
+                            <option id={{ biz_id }}>{{ biz_name }}</option>
                         {% endfor %}
                     </select>
                 </div>

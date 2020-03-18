@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="687e317e-8631-4526-bbe0-efcab3a454cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/js/jquery-1.11.2.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/job-class.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/job-class.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/joblwj/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/joblwj/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/templates/record.html" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/templates/record.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/templates/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/joblwj/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="E:/liuwjtest/.idea/liuwjtest.iml" beforeDir="false" afterPath="E:/liuwjtest/.idea/liuwjtest.iml" afterDir="false" />
+      <change beforePath="E:/liuwjtest/.idea/modules.xml" beforeDir="false" afterPath="E:/liuwjtest/.idea/modules.xml" afterDir="false" />
+      <change beforePath="E:/liuwjtest/.idea/vcs.xml" beforeDir="false" afterPath="E:/liuwjtest/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="E:/liuwjtest/moments/templates/my_post.html" beforeDir="false" afterPath="E:/liuwjtest/moments/templates/my_post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ZD0MNVaa5ZpLOnt9rqzLDhNrE2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -33,8 +40,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/liuwjtest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\job-class\job-class\static\js" />
+    </key>
   </component>
   <component name="RunManager" selected="Django server.job-class">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -78,7 +90,7 @@
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
+      <option name="runNoReload" value="true" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
       <method v="2" />
@@ -115,7 +127,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584358309229</updated>
-      <workItem from="1584358312636" duration="8967000" />
+      <workItem from="1584358312636" duration="34816000" />
+      <workItem from="1584494211135" duration="12816000" />
+      <workItem from="1584514818006" duration="3476000" />
     </task>
     <servers />
   </component>
@@ -123,10 +137,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584360734956">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584514896570">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584360734956" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584514896570" />
     <state x="668" y="126" key="#job-class" timestamp="1584358593726">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -135,50 +149,66 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="694" y="281" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584358528965" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1584360680762">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1584413750977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584360680762" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1584367497971">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584413750977" />
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1584518905603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584367497971" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1584367497971">
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584518905603" />
+    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1584518905603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584367497971" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1584367497971">
+    <state width="1877" height="276" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584518905603" />
+    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1584518905602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584367497971" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1584367497971">
+    <state width="1877" height="276" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584518905602" />
+    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1584518905603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584367497971" />
-    <state width="1877" height="434" key="GridCell.Tab.1.bottom" timestamp="1584360373790">
+    <state width="1877" height="276" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584518905603" />
+    <state width="1877" height="243" key="GridCell.Tab.1.bottom" timestamp="1584515345111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="434" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584360373790" />
-    <state width="1877" height="434" key="GridCell.Tab.1.center" timestamp="1584360373790">
+    <state width="1877" height="243" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584515345111" />
+    <state width="1877" height="243" key="GridCell.Tab.1.center" timestamp="1584515345111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="434" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584360373790" />
-    <state width="1877" height="434" key="GridCell.Tab.1.left" timestamp="1584360373790">
+    <state width="1877" height="243" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584515345111" />
+    <state width="1877" height="243" key="GridCell.Tab.1.left" timestamp="1584515345111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="434" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584360373790" />
-    <state width="1877" height="434" key="GridCell.Tab.1.right" timestamp="1584360373790">
+    <state width="1877" height="243" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584515345111" />
+    <state width="1877" height="243" key="GridCell.Tab.1.right" timestamp="1584515345111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="434" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584360373790" />
+    <state width="1877" height="243" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584515345111" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1584358611744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584358611744" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1584430385124">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1584430385124" />
+    <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1584514854535">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1584514854535" />
     <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1584358825212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584358825212" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="hosts[0]['cloud_id']" language="Python" />
+        <watch expression="__py_debug_temp_var_725153744[0]['id']" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/job_class$test.coverage" NAME="test Coverage Results" MODIFIED="1584366226138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -31,6 +31,7 @@
     <!--[if lt IE 9]><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/html5shiv.min.js"></script><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/respond.min.js"></script><![endif]-->
     <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
     <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bk-icon-2.0/iconfont.css" rel="stylesheet">
+    <script src={{ STATIC_URL }}js/csrftoken.js></script>
 </head>
 
 <body class="bg-bright3" data-bg-color="bg-bright3">
@@ -64,9 +65,9 @@
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择业务：</label>
-                    <select class="form-control">
-                        {% for biz_name in info %}
-                            <option value="业务">{{ biz_name }}</option>
+                    <select class="form-control ele">
+                        {% for biz_name, biz_id in info %}
+                            <option value={{ biz_id }} class="info">{{ biz_name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -74,9 +75,9 @@
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择脚本：</label>
-                    <select class="form-control">
+                    <select class="form-control ele1">
                         {% for task in tasks %}
-                            <option value="脚本">{{ task.scriptname }}</option>
+                            <option value={{ task.scriptname }}>{{ task.scriptname }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -90,22 +91,21 @@
                                 <th style="width: 25px">
                                     <input type="checkbox" name="checkall" value="">
                                 </th>
-                                <th style="width:100px">序号</th>
+                                <th style="width:100px">ID</th>
                                 <th style="width:25%">IP</th>
                                 <th style="width:25%">操作系统</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-{#                        {% for indexs in index %}#}
-                            {% for host_innerip, os_name in data %}
+                        <tbody class="host" id="td">
+                            {% for host in data %}
                                 <tr>
                                     <td>
-                                        <input type="checkbox" value="">
+                                        <input type="checkbox" value="{{ host.host_id }}">
                                     </td>
-                                    <td>indexs</td>
-                                    <td>{{ host_innerip }}</td>
-                                    <td>{{ os_name }}</td>
+                                    <td>{{ host.host_id }}</td>
+                                    <td class="ip" value="{{ host.ip }}">{{ host.ip }}</td>
+                                    <td class="os">{{ host.os }}</td>
                                     <td>
                                         <button class="btn btn-xs btn-primary" title="编辑">
                                             <i class="glyphicon glyphicon-edit"></i>
@@ -116,7 +116,6 @@
                                     </td>
                                 </tr>
                             {% endfor %}
-{#                        {% endfor %}#}
                         </tbody>
                         <tfoot>
                             <tr>
@@ -155,15 +154,65 @@
                             }
                         });
                 </script>
+                <script>
+                    $(".ele").change(function() {
+                            $.ajax({
+                                url: '/host/update',
+                                type: 'POST',
+                                data:{
+                                    'biz_id': $('.ele').val(),
+                                    'csrfmiddlewaretoken': "{{ csrf_token }}"
+                                },
+                                success: function(response) {
+                                    $('#td').empty();
+                                    if(response.data.length > 0){
+                                       {#alert(response["message"])#}
+                                        $.each(response.data,function (data,ele) {
+                                            $('#td').append("                                <tr>\n" +
+                                            "                                    <td>\n" +
+                                            "                                        <input type=\"checkbox\" value=\"\">\n" +
+                                            "                                    </td>\n" +
+                                            "                                    <td>" + ele.host_id + "</td>\n" +
+                                            "                                    <td class=\"ip\" value=\"\">" + ele.ip + "</td>\n" +
+                                            "                                    <td>" + ele.os + "</td>\n" +
+                                            "                                    <td>\n" +
+                                            "                                        <button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
+                                            "                                            <i class=\"glyphicon glyphicon-edit\"></i>\n" +
+                                            "                                        </button>\n" +
+                                            "                                        <button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
+                                            "                                            <i class=\"glyphicon glyphicon-remove\"></i>\n" +
+                                            "                                        </button>\n" +
+                                            "                                    </td>\n" +
+                                            "                                </tr>")
+                                        })
+                                    }else {
+                                       alert('该业务没有机器')
+                                    }
+                                }
+                            })
+                        })
+                </script>
             </form>
-
-            <form class="form-vertical p15 " style="width: 30%;">
+            <p>{{ test }}</p>
+            <form method="post" class="form-vertical p15 " style="width: 30%;">
                 <div class="form-group">
-                    <button type="button" class="king-btn mr10  king-success">执行</button>
+                    <button type="button" class="king-btn mr10 king-success">执行</button>
                     <button type="button" class="king-btn king-default ">取消</button>
                 </div>
             </form>
-
+            <script>
+                $('.king-success').click(function () {
+                    $.ajax({
+                        url: '/post',
+                        type: 'POST',
+                        data:{
+                            "biz_id":$('.ele').val(),
+                            "scriptname":$('.ele1').val(),
+                            "ip":$('.ip').val()
+                        }
+                    })
+                })
+            </script>
         </div>
     </div>
 </body>

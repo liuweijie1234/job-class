@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+import json, base64
 from django.shortcuts import render
-from django.http.response import JsonResponse
-from joblwj.models import SelectScript
+from django.http.response import JsonResponse, HttpResponse
+from joblwj.models import SelectScript, Doinfo
 from blueking.component.shortcuts import get_client_by_user
 from blueking.component.shortcuts import get_client_by_request
 
@@ -13,56 +14,89 @@ client = get_client_by_user("admin")
 # kwargs = {"fields": ["bk_biz_id","bk_biz_name"]}
 
 # 查询业务
-def get_host_info():
+def get_biz_info():
     result = client.cc.search_business()
-    if result["result"]:
-        if result['data']['info']:
-            biz_name = []
-            biz_id = []
-            info = {}
-            for i in result['data']['info']:
-                biz_name.append(i['bk_biz_name'])
-                biz_id.append(i['bk_biz_id'])
-                info = dict(zip(biz_id, biz_name))
-            return info
-    else:
-        return JsonResponse({"result": False})
+    if result['data']['info']:
+        biz_name = []
+        biz_id = []
+        info = {}
+        for i in result['data']['info']:
+            biz_name.append(i['bk_biz_name'])
+            biz_id.append(i['bk_biz_id'])
+            info = dict(zip(biz_name, biz_id))
+        return info
 
+
+# 根据条件查询主机
+def ser_host(biz_id):
+    kwargs = {"bk_biz_id": biz_id}
+    result = client.cc.search_host(kwargs)
+    hosts = []
+    if result['data']['info']:
+        for host_info in result['data']['info']:
+            hosts.append({
+                "ip": host_info['host']['bk_host_innerip'],
+                "os": host_info['host']["bk_os_name"],
+                "host_id": host_info['host']["bk_host_id"],
+                "cloud_id": host_info['host']["bk_cloud_id"]
+            })
+    return hosts
+
+# ajax 请求业务相应的host,并返回
+def get_host(request):
+    try:
+        biz_id = request.POST.get('biz_id')
+        data = ser_host(biz_id)
+        result = True
+        message = "update success"
+    except Exception as err:
+        result = False
+        message = str(err)
+        data = []
+    return JsonResponse({"result": result, "message": message, "data": data})
+
+
+# 执行任务
+def execute_script():
+    # biz_id = request.POST.get('biz_id')
+    # scriptcontent = request.POST.get('task.scriptname')
+    # host_id = request.POST.get('host.host_id')
+    kwargs = {"bk_biz_id": 2,
+              "script_content": 'IyEvYmluL2Jhc2gNCg0KbHMgLWE=',
+              "account": "root",
+              "script_type": 1,
+              "ip_list": [
+                  {
+                      "bk_cloud_id": 0,
+                      "ip": "10.0.5.103"
+                  }
+              ]}
+    result = client.job.fast_execute_script(kwargs)
+    return result
 
 def tasks(request):
     tasks = SelectScript.objects.all()
-    # 根据条件查询主机
-    for biz_id, biz_name in get_host_info().items():
-        kwargs = {"bk_biz_id": 2}
-        result = client.cc.search_host(kwargs)
-        if result["result"]:
-            if result['data']['info']:
-                hosts = []
-                data, res = {}, {}
-                host_innerip = []
-                os_name = []
-                for host_info in result['data']['info']:
-                    hosts.append(host_info['host'])
-                for i in hosts:
-                    host_innerip.append(i['bk_host_innerip'])
-                    os_name.append(i['bk_os_name'])
-                    data = dict(zip(host_innerip, os_name))
-            return render(request, 'tasks.html', {"tasks": tasks, "info": get_host_info().values(), "data": data.items(), "index": enumerate(data, 1)})
-        return JsonResponse({"result": False})
+    data = {"tasks": tasks,
+            "info": get_biz_info().items(),
+            "data": ser_host(2),
+            "test": execute_script()}
+    return render(request, 'tasks.html', data)
 
 
 def record(request):
-    # 获取管理后台所有任务脚本
     tasks = SelectScript.objects.all()
+    doinfos = Doinfo.objects.all()
     # 查询所有用户信息
     result = client.bk_login.get_all_users()
-    if result["result"]:
-        if result['data']:
-            usernames = []
-            for i in result['data']:
-                usernames.append(i['bk_username'])
-            return render(request, 'record.html', {"tasks": tasks, "info": get_host_info().values(), "usernames": usernames})
-    else:
-        return JsonResponse({"result": False})
+    if result['data']:
+        usernames = []
+        for i in result['data']:
+            usernames.append(i['bk_username'])
+    data = {"tasks": tasks,
+            "doinfos": doinfos,
+            "info": get_biz_info().items(),
+            "usernames": usernames}
+    return render(request, 'record.html', data)
+
 
 

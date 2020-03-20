@@ -117,47 +117,13 @@
                                 </tr>
                             {% endfor %}
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="6">
-                                    <div class="pull-left">
-                                        <a class="king-btn king-radius king-danger ml10" id="deleteAll" title="删除">删除</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
+
                     </table>
                 </div>
-                <script type="text/javascript">
-                    $('#table_demo2').find('input[name="checkall"]').click(function(){
-                            var checked = $(this).prop('checked');
-                            $('#table_demo2>tbody input').prop('checked', checked);
-                        });
-                    $('#table_demo2').find(':checkbox').on('click', function(){
-                        if(!this.checked){
-                            $('#table_demo2').find('input[name="checkall"]').prop('checked',false);
-                        }
-                    });
-                    $('#table_demo2').find('.glyphicon-remove').parent('button').click(function(){
-                        if(confirm('确定要删除？')){
-                            $(this).closest('tr').remove();
-                        }
-                    });
-                    $('#deleteAll').click(function(event) {
-                        var records = $('#table_demo2>tbody input:checked').closest('tr');
-                        if (!records.length){
-                            alert('请选择要删除的记录！');
-                            return false;
-                        }
-                        if(confirm('确定要删除？')){
-                            records.remove();
-                        }
-                    });
-                </script>
                 <script>
                     $(".ele").change(function() {
                         $.ajax({
-                            url: '{{ SITE_URL }}/host/update',
+                            url: '/host/update',
                             type: 'POST',
                             data:{
                                 'biz_id': $('.ele').val(),
@@ -191,7 +157,10 @@
                             }
                         })
                     });
-
+                    $('#table_demo2').find('input[name="checkall"]').click(function(){
+                        var checked = $(this).prop('checked');
+                        $('#table_demo2>tbody input').prop('checked', checked);
+                    });
                     var ids=[];
                     $('input.hostid').change(function() {
                         $('input:checkbox:checked').each(function() { 
@@ -215,14 +184,13 @@
             <form method="post" class="form-vertical p15 " style="width: 30%;">
                 {% csrf_token %}
                 <div class="form-group">
-                    <button type="button" class="king-btn mr10 king-success">执行</button>
-                    <button type="button" class="king-btn king-default ">取消</button>
+                    <button type="button" class="king-btn mr10 king-success" id="submit">执行</button>
                 </div>
             </form>
             <script>
                 $('.king-success').click(function () {
                     $.ajax({
-                        url: '{{ SITE_URL }}/post/',
+                        url: '/execute/',
                         type: 'POST',
                         data:{
                             "biz_id":$('.ele').val(),
@@ -235,6 +203,7 @@
                         }
                     })
                 })
+
             </script>
         </div>
     </div>

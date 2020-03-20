@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import json, base64
+import json, base64, datetime, time
+from celery.task import task
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from joblwj.models import SelectScript, Doinfo

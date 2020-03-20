@@ -8,5 +8,5 @@ urlpatterns = (
     url(r'^tasks/$', views.tasks),
     url(r'^record/$', views.record),
     url(r'^host/update$', views.get_host),
-    url(r'^post/$', views.execute_script)
+    url(r'^execute/$', views.execute_script)
 )

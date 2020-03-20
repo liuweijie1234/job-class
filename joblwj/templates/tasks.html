@@ -65,7 +65,7 @@
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择业务：</label>
-                    <select class="form-control ele">
+                    <select class="form-control ele" id="biz_id">
                         {% for biz_name, biz_id in info %}
                             <option value={{ biz_id }} class="info">{{ biz_name }}</option>
                         {% endfor %}
@@ -75,9 +75,9 @@
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择脚本：</label>
-                    <select class="form-control ele1">
+                    <select class="form-control ele1" id="script_id">
                         {% for task in tasks %}
-                            <option value={{ task.scriptname }}>{{ task.scriptname }}</option>
+                            <option value={{ task.id }}>{{ task.scriptname }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -89,7 +89,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 25px">
-                                    <input type="checkbox" name="checkall" value="">
+                                    <input class="hostidall" id="checkall" type="checkbox" name="checkall" value="">
                                 </th>
                                 <th style="width:100px">ID</th>
                                 <th style="width:25%">IP</th>
@@ -101,11 +101,11 @@
                             {% for host in data %}
                                 <tr>
                                     <td>
-                                        <input type="checkbox" value="{{ host.host_id }}">
+                                        <input class="hostid" name="host" type="checkbox" value="{{ host.host_id }}">
                                     </td>
                                     <td>{{ host.host_id }}</td>
-                                    <td class="ip" value="{{ host.ip }}">{{ host.ip }}</td>
-                                    <td class="os">{{ host.os }}</td>
+                                    <td class="ip" name="host" value="{{ host.ip }}">{{ host.ip }}</td>
+                                    <td class="os" name="host" value="{{ host.os }}">{{ host.os }}</td>
                                     <td>
                                         <button class="btn btn-xs btn-primary" title="编辑">
                                             <i class="glyphicon glyphicon-edit"></i>
@@ -133,31 +133,31 @@
                             var checked = $(this).prop('checked');
                             $('#table_demo2>tbody input').prop('checked', checked);
                         });
-                        $('#table_demo2').find(':checkbox').on('click', function(){
-                            if(!this.checked){
-                                $('#table_demo2').find('input[name="checkall"]').prop('checked',false);
-                            }
-                        });
-                        $('#table_demo2').find('.glyphicon-remove').parent('button').click(function(){
-                            if(confirm('确定要删除？')){
-                                $(this).closest('tr').remove();
-                            }
-                        });
-                        $('#deleteAll').click(function(event) {
-                            var records = $('#table_demo2>tbody input:checked').closest('tr');
-                            if (!records.length){
-                                alert('请选择要删除的记录！');
-                                return false;
-                            }
-                            if(confirm('确定要删除？')){
-                                records.remove();
-                            }
-                        });
+                    $('#table_demo2').find(':checkbox').on('click', function(){
+                        if(!this.checked){
+                            $('#table_demo2').find('input[name="checkall"]').prop('checked',false);
+                        }
+                    });
+                    $('#table_demo2').find('.glyphicon-remove').parent('button').click(function(){
+                        if(confirm('确定要删除？')){
+                            $(this).closest('tr').remove();
+                        }
+                    });
+                    $('#deleteAll').click(function(event) {
+                        var records = $('#table_demo2>tbody input:checked').closest('tr');
+                        if (!records.length){
+                            alert('请选择要删除的记录！');
+                            return false;
+                        }
+                        if(confirm('确定要删除？')){
+                            records.remove();
+                        }
+                    });
                 </script>
                 <script>
                     $(".ele").change(function() {
                         $.ajax({
-                            url: '/host/update',
+                            url: '${ SITE_URL }/host/update',
                             type: 'POST',
                             data:{
                                 'biz_id': $('.ele').val(),
@@ -168,33 +168,52 @@
                                 if(response.data.length > 0){
                                    {#alert(response["message"])#}
                                     $.each(response.data,function (data,ele) {
-                                        $('#td').append("                                <tr>\n" +
-                                        "                                    <td>\n" +
-                                        "                                        <input type=\"checkbox\" value=\"\">\n" +
-                                        "                                    </td>\n" +
-                                        "                                    <td>" + ele.host_id + "</td>\n" +
-                                        "                                    <td class=\"ip\" value=\"\">" + ele.ip + "</td>\n" +
-                                        "                                    <td>" + ele.os + "</td>\n" +
-                                        "                                    <td>\n" +
-                                        "                                        <button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
-                                        "                                            <i class=\"glyphicon glyphicon-edit\"></i>\n" +
-                                        "                                        </button>\n" +
-                                        "                                        <button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
-                                        "                                            <i class=\"glyphicon glyphicon-remove\"></i>\n" +
-                                        "                                        </button>\n" +
-                                        "                                    </td>\n" +
-                                        "                                </tr>")
+                                        $('#td').append("<tr>\n" +
+                                        "<td>\n" +
+                                        "<input class=\"hostid\" name=\"host\" type=\"checkbox\" value=" + ele.host_id + ">\n" +
+                                        "</td>\n" +
+                                        "<td>" + ele.host_id + "</td>\n" +
+                                        "<td class=\"ip\" name=\"host\" value=" + ele.ip + ">" + ele.ip + "</td>\n" +
+                                        "<td class=\"os\" name=\"host\" value=" + ele.os + ">" + ele.os + "</td>\n" +
+                                        "<td>\n" +
+                                        "<button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
+                                        "<i class=\"glyphicon glyphicon-edit\"></i>\n" +
+                                        "</button>\n" +
+                                        "<button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
+                                        "<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+                                        "</button>\n" +
+                                        "</td>\n" +
+                                        "</tr>")
                                     })
                                 }else {
                                    alert('该业务没有机器')
                                 }
                             }
                         })
-                    })
+                    });
+
+                    var ids=[];
+                    $('input.hostid').change(function() {
+                        $('input:checkbox:checked').each(function() { 
+                            ids.push($(this).val());
+                            console.log(ids)
+                        })
+                    });
+                    {#$("input.hostidall").click(function() {#}
+                    {#    if (this.checked) {#}
+                    {#        $("input:checkbox:checked").each(function() {#}
+                    {#                    alert($(this).val());#}
+                    {#                })#}
+                    {#        } else {#}
+                    {#        $("input:checkbox:checked").each(function() {#}
+                    {#                    alert($(this).val());#}
+                    {#                })#}
+                    {#    }#}
+                    {#})#}
                 </script>
             </form>
-            <p>{{ test }}</p>
             <form method="post" class="form-vertical p15 " style="width: 30%;">
+                {% csrf_token %}
                 <div class="form-group">
                     <button type="button" class="king-btn mr10 king-success">执行</button>
                     <button type="button" class="king-btn king-default ">取消</button>
@@ -203,15 +222,16 @@
             <script>
                 $('.king-success').click(function () {
                     $.ajax({
-                        url: '/post',
+                        url: '${ SITE_URL }/post/',
                         type: 'POST',
                         data:{
                             "biz_id":$('.ele').val(),
-                            "scriptname":$('.ele1').val(),
-                            "ip":$('.ip').val()
+                            "scriptid":$('.ele1').val(),
+                            "ip":$('.ip').val(),
+                            'csrfmiddlewaretoken': "{{ csrf_token }}"
                         },
                         success: function (response) {
-                            alert(response["message"])
+                            alert(response["result","message","data"])
                         }
                     })
                 })

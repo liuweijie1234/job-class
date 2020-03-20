@@ -57,30 +57,36 @@ def get_host(request):
 
 
 # 执行任务
-def execute_script():
-    # biz_id = request.POST.get('biz_id')
-    # scriptcontent = request.POST.get('task.scriptname')
-    # host_id = request.POST.get('host.host_id')
-    kwargs = {"bk_biz_id": 2,
-              "script_content": 'IyEvYmluL2Jhc2gNCg0KbHMgLWE=',
-              "account": "root",
-              "script_type": 1,
-              "ip_list": [
-                  {
-                      "bk_cloud_id": 0,
-                      "ip": "10.0.5.103"
-                  }
-              ]}
-    result = client.job.fast_execute_script(kwargs)
-    return result
+def execute_script(request):
+    try:
+        biz_id = request.POST.get('biz_id')
+        scriptcontent = request.POST.get('task.scriptname')
+        ip = request.POST.get('ip')
+        kwargs = {"bk_biz_id": biz_id,
+                  "script_content": 'IyEvYmluL2Jhc2gNCg0KbHMgLWE=',
+                  "account": "root",
+                  "script_type": 1,
+                  "ip_list": [
+                      {
+                          "bk_cloud_id": 0,
+                          "ip": ip
+                      }
+                  ]}
+        data = client.job.fast_execute_script(kwargs)
+        result = True
+        message = "update success"
+    except Exception as err:
+        result = False
+        message = str(err)
+        data = []
+    return JsonResponse({"result": result, "message": message, "data": data})
 
 
 def tasks(request):
     tasks = SelectScript.objects.all()
     data = {"tasks": tasks,
             "info": get_biz_info().items(),
-            "data": ser_host(2),
-            "test": execute_script()}
+            "data": ser_host(2)}
     return render(request, 'tasks.html', data)
 
 

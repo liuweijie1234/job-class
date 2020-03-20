@@ -157,7 +157,7 @@
                 <script>
                     $(".ele").change(function() {
                         $.ajax({
-                            url: '${ SITE_URL }/host/update',
+                            url: '{{ SITE_URL }}/host/update',
                             type: 'POST',
                             data:{
                                 'biz_id': $('.ele').val(),
@@ -222,7 +222,7 @@
             <script>
                 $('.king-success').click(function () {
                     $.ajax({
-                        url: '${ SITE_URL }/post/',
+                        url: '{{ SITE_URL }}/post/',
                         type: 'POST',
                         data:{
                             "biz_id":$('.ele').val(),

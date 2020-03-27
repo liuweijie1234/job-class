@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import json, base64, datetime, time
+import json, base64, datetime, time, copy
+from joblwj.celery_tasks import async_status
 from celery.task import task
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
@@ -61,25 +62,60 @@ def get_host(request):
 def execute_script(request):
     try:
         biz_id = request.POST.get('biz_id')
-        scriptcontent = request.POST.get('task.scriptname')
-        ip = request.POST.get('ip')
+        script_id = request.POST.get('script_id')
+        obj = SelectScript.objects.get(id=script_id)
+        objtest = base64.b64encode(obj.scriptcontent.encode('utf-8'))
+        ip_id = request.POST.getlist('ip_id[]')
+        ips = {"bk_cloud_id": 0, "ip": 0}
+        ip_info = []
+        for i in ip_id:
+            ips['ip'] = i
+            ip_info.append(copy.deepcopy(ips))
         kwargs = {"bk_biz_id": biz_id,
-                  "script_content": 'IyEvYmluL2Jhc2gNCg0KbHMgLWE=',
+                  "script_content": str(objtest, 'utf-8'),
                   "account": "root",
                   "script_type": 1,
-                  "ip_list": [
-                      {
-                          "bk_cloud_id": 0,
-                          "ip": ip
-                      }
-                  ]}
-        data = client.job.fast_execute_script(kwargs)
+                  "ip_list": ip_info}
+        execute_data = client.job.fast_execute_script(kwargs)
+        data = execute_data['data']
         result = True
         message = "update success"
+
+        # job_id = data['job_instance_id']
+        # kwargs2 = {"bk_biz_id": biz_id,
+        #            'job_instance_id': job_id}
+
+        async_status.apply_async(args=[client, data, biz_id, obj, ip_id], kwargs={})
+        # job_data = async_status.apply_async(args=[client], kwargs=kwargs2)
+        # # job_data = client.job.get_job_instance_status(kwargs2)
+        # job_instance = job_data['data']['job_instance']
+        # is_finished = job_data['data']['is_finished']
+        # status = job_instance['status']
+        # create_time = job_instance['create_time'][:-6]
+        # start_time = job_instance['start_time'][:-6]
+        # if job_instance.get('end_time', ''):
+        #     end_time = job_instance['end_time'][:-6]
+        # else:
+        #     end_time = datetime.datetime.now()
+        #
+        # Doinfo.objects.create(
+        #     businessname=biz_id,
+        #     username='admin',
+        #     scriptname=obj,
+        #     scriptcontent=obj.scriptcontent,
+        #     createtime=create_time,
+        #     starttime=start_time,
+        #     endtime=end_time,
+        #     ipcount=len(ip_id),
+        #     details=is_finished,
+        #     jobid=job_id,
+        #     status=status
+        # )
+
     except Exception as err:
+        data = []
         result = False
         message = str(err)
-        data = []
     return JsonResponse({"result": result, "message": message, "data": data})
 
 
@@ -100,11 +136,26 @@ def record(request):
         usernames = []
         for i in result['data']:
             usernames.append(i['bk_username'])
-    data = {"tasks": tasks,
-            "doinfos": doinfos,
-            "info": get_biz_info().items(),
-            "usernames": usernames}
+    data = {"info": get_biz_info().items(),
+            "usernames": usernames,
+            "tasks": tasks,
+            "doinfos": doinfos}
     return render(request, 'record.html', data)
 
+
+def inquiry(request):
+    try:
+        biz_id = request.POST.get('biz_id')
+        username = request.POST.get('username')
+        script_id = request.POST.get('script_id')
+        time = request.POST.get('time')  #"2020/03/27 - 2020/03/27"
+        data = [biz_id, username, script_id, time]
+        result = True
+        message = "update success"
+    except Exception as err:
+        data = []
+        result = False
+        message = str(err)
+    return JsonResponse({"result": result, "message": message, "data": data})
 
 

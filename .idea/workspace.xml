@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="687e317e-8631-4526-bbe0-efcab3a454cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/default.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/joblwj/migrations/0002_do_info.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/joblwj/migrations/0003_auto_20200317_1739.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/joblwj/migrations/0004_auto_20200317_1749.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/joblwj/templates/record.html" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/templates/record.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/templates/tasks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joblwj/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/joblwj/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mako_templates/base.mako" beforeDir="false" afterPath="$PROJECT_DIR$/mako_templates/base.mako" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/open/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="E:/liuwjtest/.idea/liuwjtest.iml" beforeDir="false" afterPath="E:/liuwjtest/.idea/liuwjtest.iml" afterDir="false" />
       <change beforePath="E:/liuwjtest/.idea/modules.xml" beforeDir="false" afterPath="E:/liuwjtest/.idea/modules.xml" afterDir="false" />
       <change beforePath="E:/liuwjtest/.idea/vcs.xml" beforeDir="false" afterPath="E:/liuwjtest/.idea/vcs.xml" afterDir="false" />
@@ -26,8 +31,19 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="job-class" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/liuweijie1234/job-class.git" />
+        <option value="https://github.com/liuweijie1234/liuwjtest.git" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1ZD0MNVaa5ZpLOnt9rqzLDhNrE2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -39,21 +55,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/manage.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\job-class\job-class\blueking\component\apis" />
       <recent name="E:\job-class\job-class\static\js" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.job-class">
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="celery worker" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="job-class" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -61,8 +79,8 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="celery worker --settings=settings -l info" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -96,11 +114,11 @@
     </configuration>
     <list>
       <item itemvalue="Django server.job-class" />
-      <item itemvalue="Python.test" />
+      <item itemvalue="Python.celery worker" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
+        <item itemvalue="Python.celery worker" />
       </list>
     </recent_temporary>
   </component>
@@ -116,6 +134,9 @@
       </list>
     </option>
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -129,78 +150,158 @@
       <workItem from="1584358312636" duration="34816000" />
       <workItem from="1584494211135" duration="12816000" />
       <workItem from="1584514818006" duration="24372000" />
-      <workItem from="1584613163539" duration="14672000" />
+      <workItem from="1584613163539" duration="25779000" />
+      <workItem from="1584711712397" duration="1509000" />
+      <workItem from="1584926692513" duration="11386000" />
+      <workItem from="1585012282228" duration="3657000" />
+      <workItem from="1585030809859" duration="23892000" />
+      <workItem from="1585099005838" duration="7573000" />
+      <workItem from="1585107562094" duration="12143000" />
+      <workItem from="1585141962350" duration="496000" />
+      <workItem from="1585142474879" duration="140000" />
+      <workItem from="1585185808390" duration="407000" />
+      <workItem from="1585186221809" duration="6000" />
+      <workItem from="1585186258666" duration="410000" />
+      <workItem from="1585186837997" duration="7947000" />
+      <workItem from="1585228019145" duration="26531000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584514896570">
+    <state x="535" y="107" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585311759948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584514896570" />
+    <state x="535" y="107" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585311759948" />
+    <state x="535" y="107" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584711754805" />
+    <state x="692" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585141996128">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="692" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585141996128" />
+    <state x="2610" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585295795933">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585295795933" />
     <state x="668" y="126" key="#job-class" timestamp="1584358593726">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="126" key="#job-class/0.0.1920.1040@0.0.1920.1040" timestamp="1584358593726" />
+    <state x="715" y="222" key="#xdebugger.evaluate" timestamp="1585192919109">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="222" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585192919109" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1585312127665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585312127665" />
     <state x="694" y="281" key="EnvironmentVariablesDialog" timestamp="1584358528965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="694" y="281" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584358528965" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1584413750977">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585311650672">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584413750977" />
-    <state width="1877" height="381" key="GridCell.Tab.0.bottom" timestamp="1584674051941">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585311650672" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584706797090" />
+    <state width="1877" height="311" key="GridCell.Tab.0.bottom" timestamp="1585315115530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051941" />
-    <state width="1877" height="381" key="GridCell.Tab.0.center" timestamp="1584674051940">
+    <state width="1877" height="311" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115530" />
+    <state width="1877" height="206" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585291546930" />
+    <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584970558771" />
+    <state width="1877" height="311" key="GridCell.Tab.0.center" timestamp="1585315115530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051940" />
-    <state width="1877" height="381" key="GridCell.Tab.0.left" timestamp="1584674051940">
+    <state width="1877" height="311" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115530" />
+    <state width="1877" height="206" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585291546930" />
+    <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584970558771" />
+    <state width="1877" height="311" key="GridCell.Tab.0.left" timestamp="1585315115530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051940" />
-    <state width="1877" height="381" key="GridCell.Tab.0.right" timestamp="1584674051941">
+    <state width="1877" height="311" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115530" />
+    <state width="1877" height="206" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585291546930" />
+    <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584970558771" />
+    <state width="1877" height="311" key="GridCell.Tab.0.right" timestamp="1585315115530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051941" />
-    <state width="1877" height="381" key="GridCell.Tab.1.bottom" timestamp="1584674051941">
+    <state width="1877" height="311" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115530" />
+    <state width="1877" height="206" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585291546930" />
+    <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584970558771" />
+    <state width="1877" height="172" key="GridCell.Tab.1.bottom" timestamp="1585315115528">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051941" />
-    <state width="1877" height="381" key="GridCell.Tab.1.center" timestamp="1584674051941">
+    <state width="1877" height="172" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115528" />
+    <state width="1647" height="377" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584707433168" />
+    <state width="1877" height="172" key="GridCell.Tab.1.center" timestamp="1585315115527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051941" />
-    <state width="1877" height="381" key="GridCell.Tab.1.left" timestamp="1584674051941">
+    <state width="1877" height="172" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115527" />
+    <state width="1647" height="377" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584707433168" />
+    <state width="1877" height="172" key="GridCell.Tab.1.left" timestamp="1585315115527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051941" />
-    <state width="1877" height="381" key="GridCell.Tab.1.right" timestamp="1584674051941">
+    <state width="1877" height="172" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115527" />
+    <state width="1647" height="377" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584707433168" />
+    <state width="1877" height="172" key="GridCell.Tab.1.right" timestamp="1585315115527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="381" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584674051941" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1584358611744">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="172" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585315115527" />
+    <state width="1647" height="377" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584707433168" />
+    <state x="2381" y="162" key="SettingsEditor" timestamp="1585277863636">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585186653435" />
+    <state x="2381" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585277863636" />
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584358611744" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1584430385124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1584430385124" />
+    <state x="92" y="92" width="1736" height="856" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1585312127665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584929993373" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1584929993373">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584929993373" />
     <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1584514854535">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1584514854535" />
-    <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1584613454357">
+    <state x="1920" y="0" width="1646" height="1026" key="dock-window-1" timestamp="1585030899367">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1646" height="1026" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585030899367" />
+    <state x="1920" y="0" width="1646" height="1047" maximized="true" key="dock-window-2" timestamp="1585037003360">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1646" height="1047" maximized="true" key="dock-window-2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585037003360" />
+    <state x="2018" y="0" width="1312" height="1011" key="dock-window-3" timestamp="1585052306591">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2018" y="0" width="1312" height="1011" key="dock-window-3/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585052306591" />
+    <state x="558" y="256" width="647" height="534" key="find.popup" timestamp="1585141596044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584613454357" />
+    <state x="558" y="256" width="647" height="534" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585141596044" />
+    <state x="558" y="256" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584703174614" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585295947239">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585295947239" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -209,6 +310,16 @@
           <url>file://$PROJECT_DIR$/joblwj/views.py</url>
           <line>1</line>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/joblwj/views.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/joblwj/views.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -220,6 +331,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/job_class$test.coverage" NAME="test Coverage Results" MODIFIED="1584366226138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/job_class$test.coverage" NAME="test Coverage Results" MODIFIED="1585188055732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/job_class$celery_worker.coverage" NAME="celery worker Coverage Results" MODIFIED="1585314424964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

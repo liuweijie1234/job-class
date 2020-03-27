@@ -7,7 +7,6 @@
     <title>${APP_CODE}</title>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-	<link rel="shortcut icon" href="${STATIC_URL}open/favicon.ico" type="image/x-icon">
 	<!-- bootstrap css -->
 	<link href="${REMOTE_STATIC_URL}v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
 	<!-- 禁止bootstrap 响应式 （app根据自身需求启用或禁止bootstrap响应式） -->

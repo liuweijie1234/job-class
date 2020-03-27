@@ -18,6 +18,7 @@
     <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk_pack.css" rel="stylesheet">
     <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
     <script src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+
     <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
@@ -32,12 +33,13 @@
     <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
     <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bk-icon-2.0/iconfont.css" rel="stylesheet">
     <script src={{ STATIC_URL }}js/csrftoken.js></script>
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/artDialog-6.0.4/css/ui-dialog.css" rel="stylesheet">
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/artDialog-6.0.4/dist/dialog-min.js"></script>
 </head>
 
 <body class="bg-bright3" data-bg-color="bg-bright3">
     <div class="king-page-box">
         <div class="king-container clearfix">
-
             <nav class="">
                 <div style="overflow:hidden; z-index: inherit;" class="navbar king-horizontal-nav1 f16">
                     <div class="navbar-container">
@@ -61,7 +63,6 @@
                     </div>
                 </div>
             </nav>
-
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
                 <div class="form-group ">
                     <label>选择业务：</label>
@@ -82,7 +83,6 @@
                     </select>
                 </div>
             </form>
-
             <form class="panel">
                 <div class="panel-content">
                     <table class="table table-header-bg table-hover mb0" id="table_demo2">
@@ -101,11 +101,11 @@
                             {% for host in data %}
                                 <tr>
                                     <td>
-                                        <input class="hostid" name="host" type="checkbox" value="{{ host.host_id }}">
+                                        <input class="hostid" name="checked" type="checkbox" value="{{ host.ip }}">
                                     </td>
                                     <td>{{ host.host_id }}</td>
-                                    <td class="ip" name="host" value="{{ host.ip }}">{{ host.ip }}</td>
-                                    <td class="os" name="host" value="{{ host.os }}">{{ host.os }}</td>
+                                    <td class="ip" name="hostip" value="{{ host.ip }}">{{ host.ip }}</td>
+                                    <td class="os" name="hostos" value="{{ host.os }}">{{ host.os }}</td>
                                     <td>
                                         <button class="btn btn-xs btn-primary" title="编辑">
                                             <i class="glyphicon glyphicon-edit"></i>
@@ -117,69 +117,9 @@
                                 </tr>
                             {% endfor %}
                         </tbody>
-
                     </table>
                 </div>
-                <script>
-                    $(".ele").change(function() {
-                        $.ajax({
-                            url: '/host/update',
-                            type: 'POST',
-                            data:{
-                                'biz_id': $('.ele').val(),
-                                'csrfmiddlewaretoken': "{{ csrf_token }}"
-                            },
-                            success: function(response) {
-                                $('#td').empty();
-                                if(response.data.length > 0){
-                                   {#alert(response["message"])#}
-                                    $.each(response.data,function (data,ele) {
-                                        $('#td').append("<tr>\n" +
-                                        "<td>\n" +
-                                        "<input class=\"hostid\" name=\"host\" type=\"checkbox\" value=" + ele.host_id + ">\n" +
-                                        "</td>\n" +
-                                        "<td>" + ele.host_id + "</td>\n" +
-                                        "<td class=\"ip\" name=\"host\" value=" + ele.ip + ">" + ele.ip + "</td>\n" +
-                                        "<td class=\"os\" name=\"host\" value=" + ele.os + ">" + ele.os + "</td>\n" +
-                                        "<td>\n" +
-                                        "<button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
-                                        "<i class=\"glyphicon glyphicon-edit\"></i>\n" +
-                                        "</button>\n" +
-                                        "<button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
-                                        "<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-                                        "</button>\n" +
-                                        "</td>\n" +
-                                        "</tr>")
-                                    })
-                                }else {
-                                   alert('该业务没有机器')
-                                }
-                            }
-                        })
-                    });
-                    $('#table_demo2').find('input[name="checkall"]').click(function(){
-                        var checked = $(this).prop('checked');
-                        $('#table_demo2>tbody input').prop('checked', checked);
-                    });
-                    var ids=[];
-                    $('input.hostid').change(function() {
-                        $('input:checkbox:checked').each(function() { 
-                            ids.push($(this).val());
-                            console.log(ids)
-                        })
-                    });
-                    {#$("input.hostidall").click(function() {#}
-                    {#    if (this.checked) {#}
-                    {#        $("input:checkbox:checked").each(function() {#}
-                    {#                    alert($(this).val());#}
-                    {#                })#}
-                    {#        } else {#}
-                    {#        $("input:checkbox:checked").each(function() {#}
-                    {#                    alert($(this).val());#}
-                    {#                })#}
-                    {#    }#}
-                    {#})#}
-                </script>
+
             </form>
             <form method="post" class="form-vertical p15 " style="width: 30%;">
                 {% csrf_token %}
@@ -187,24 +127,107 @@
                     <button type="button" class="king-btn mr10 king-success" id="submit">执行</button>
                 </div>
             </form>
-            <script>
-                $('.king-success').click(function () {
-                    $.ajax({
-                        url: '/execute/',
-                        type: 'POST',
-                        data:{
-                            "biz_id":$('.ele').val(),
-                            "scriptid":$('.ele1').val(),
-                            "ip":$('.ip').val(),
-                            'csrfmiddlewaretoken': "{{ csrf_token }}"
-                        },
-                        success: function (response) {
-                            alert(response["result","message","data"])
-                        }
+<script>
+    ids=[];
+    ips=[];
+    $(".ele").change(function() {
+        ids=[];
+        ips=[];
+        $.ajax({
+            url: '/host/update',
+            type: 'POST',
+            data:{
+                'biz_id': $('.ele').val(),
+                "script_id":$('.ele1').val(),
+                'csrfmiddlewaretoken': "{{ csrf_token }}"
+            },
+            success: function(response) {
+                $('#td').empty();
+                if(response.data.length > 0){
+                    $.each(response.data,function (data,ele) {
+                        $('#td').append("<tr>\n" +
+                        "<td>\n" +
+                        "<input class=\"hostid\" name=\"checked\" type=\"checkbox\" value=" + ele.ip + ">\n" +
+                        "</td>\n" +
+                        "<td>" + ele.host_id + "</td>\n" +
+                        "<td class=\"ip\" name=\"hostip\" value=" + ele.ip + ">" + ele.ip + "</td>\n" +
+                        "<td class=\"os\" name=\"hostos\" value=" + ele.os + ">" + ele.os + "</td>\n" +
+                        "<td>\n" +
+                        "<button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
+                        "<i class=\"glyphicon glyphicon-edit\"></i>\n" +
+                        "</button>\n" +
+                        "<button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
+                        "<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+                        "</button>\n" +
+                        "</td>\n" +
+                        "</tr>")
                     })
-                })
+                }else {
+                   alert('该业务没有机器')
+                }
+            }
+        })
+    });
 
-            </script>
+    $(document).on('change','input.hostid',function (event) {
+        $('input:checkbox:checked').each(function() {});
+        ips.push($(this).val());
+        console.log(ips)
+        {#$('td.ip').each(function() {});#}
+        {#console.log($(this).val());#}
+        {#ips.push($(this).val());#}
+        {#console.log(ips)#}
+    });
+
+
+    {#$("input.hostidall").change(function() {#}
+    {#    if (this.checked) {#}
+    {#        $("input:checkbox:checked").each(function() {#}
+    {#                    console.log($(this).val());#}
+    {#                    ids.push($(this).val());#}
+    {#                    console.log(ids);#}
+    {#                })#}
+    {#        } else {#}
+    {#        $("input:checkbox:checked").each(function() {#}
+    {#                    ids.push($(this).val());#}
+    {#                    console.log(ids);#}
+    {#                })#}
+    {#    }#}
+    {# })#}
+
+    $('.king-success').click(function () {
+        $.ajax({
+            url: '/execute/',
+            type: 'POST',
+            data:{
+                "biz_id":$('.ele').val(),
+                "script_id":$('.ele1').val(),
+                "ip_id":ips,
+                'csrfmiddlewaretoken': "{{ csrf_token }}"
+            },
+            success: function (response) {
+                console.log(response["result","message","data"])
+            }
+        })
+    });
+    // 成功提示
+    $("#submit").click(function() {
+        var d = dialog({
+            width: 260,
+            title: '提示',
+            okValue: '查看任务结果',
+            content: '<div class="king-notice-box king-notice-success"><p class="king-notice-text">任务提交成功！</p></div>',
+            cancelValue: '继续执行任务',
+            ok: function() {
+               alert('正在执行中')
+            },
+            cancel: function() {
+                // do something
+            }
+        });
+        d.show();
+    });
+</script>
         </div>
     </div>
 </body>

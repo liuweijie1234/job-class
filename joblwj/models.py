@@ -16,7 +16,7 @@ class Doinfo(models.Model):
     script = models.ForeignKey(SelectScript, models.CASCADE, verbose_name='脚本名称')
     createtime = models.DateTimeField(verbose_name='创建时间')
     starttime = models.DateTimeField(verbose_name='开始执行时间')
-    endtime = models.DateTimeField(verbose_name='执行结束时间',null=True, blank=True)
+    endtime = models.DateTimeField(verbose_name='执行结束时间', null=True, blank=True)
     ipcount = models.IntegerField(verbose_name='执行数量')
     details = models.CharField(max_length=200, verbose_name='详细', null=True, blank=True)
     jobid = models.IntegerField(verbose_name='jobid')

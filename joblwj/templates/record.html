@@ -32,8 +32,10 @@
     <!--[if lt IE 9]><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/html5shiv.min.js"></script><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/respond.min.js"></script><![endif]-->
     <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
     <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker-2.0.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/artDialog-6.0.4/css/ui-dialog.css" rel="stylesheet">
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/moment.min.js"></script>
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/artDialog-6.0.4/dist/dialog-min.js"></script>
 </head>
 
 <body class="bg-bright3" data-bg-color="bg-bright3">
@@ -113,6 +115,7 @@
                         <th>状态</th>
                         <th>参数</th>
                         <th>详情</th>
+                        <th>日志</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,17 +123,36 @@
                         <tr>
                             <td>{{ doinfo.businessname }}</td>
                             <td>{{ doinfo.username }}</td>
-                            <td>{{ doinfo.scriptname }}</td>
+                            <td>{{ doinfo.script.scriptname }}</td>
                             <td>{{ doinfo.starttime }}</td>
                             <td>{{ doinfo.ipcount }}</td>
                             <td>{{ doinfo.status }}</td>
-                            <td>{{ doinfo.scriptcontent }}</td>
+                            <td>{{ doinfo.script.scriptcontent }}</td>
                             <td>{{ doinfo.details }}</td>
+                            <td>
+                                <button class="btn btn-xs btn-primary" title="查看" id="plugin4_demo11" >查看</button>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
 </body>
+
+<script type="text/javascript">
+    $("#plugin4_demo11").click(function(){
+    			var d = dialog({
+    				width: 600,
+    				title: "日志详情",
+    				content: '<div class="king-notice3 king-notice-success">'+
+        				'<div class="king-notice-text">'+
+        					'<p class="f24">日志详情</p>'+
+        					'<p class="f12">该接口暂未实现</p>'+
+        				'</div>'+
+        			'</div>',
+    			});
+    			d.show();
+    		})
+</script>
 <script type="text/javascript">
 // 选择日期范围
     $('#daterangepicker_demo2').daterangepicker({
@@ -143,7 +165,7 @@
 <script>
     $('.king-success').click(function () {
         $.ajax({
-            url: '/inquiry/',
+            url: '{{ SITE_URL }}'+'/inquiry/',
             type: 'POST',
             data:{
                 "biz_id":$('.ele').val(),
@@ -153,7 +175,24 @@
                 'csrfmiddlewaretoken': "{{ csrf_token }}"
             },
             success: function (response) {
-                console.log(response["result","message","data"])
+                {#console.log(response["result", "message", "data"]);#}
+                $('tbody').empty();
+                if(response.data.length > 0){
+                    $.each(response.data,function (data,ele) {
+                        $('tbody').append("<tr>\n"+
+                            "<td>"+ ele.businessname +"</td>\n"+
+                            "<td>"+ ele.username +"</td>\n"+
+                            "<td>"+ ele.script +"</td>\n"+
+                            "<td>"+ ele.starttime +"</td>\n"+
+                            "<td>"+ ele.ipcount +"</td>\n"+
+                            "<td>"+ ele.status +"</td>\n"+
+                            "<td>"+ ele.scriptcontent +"</td>\n"+
+                            "<td>"+ ele.details +"</td>\n"+
+                        "</tr>")
+                    })
+                }else {
+                   alert('查不到数据')
+                }
             }
         })
     });

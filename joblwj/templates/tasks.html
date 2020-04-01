@@ -107,9 +107,6 @@
                                     <td class="ip" name="hostip" value="{{ host.ip }}">{{ host.ip }}</td>
                                     <td class="os" name="hostos" value="{{ host.os }}">{{ host.os }}</td>
                                     <td>
-                                        <button class="btn btn-xs btn-primary" title="编辑">
-                                            <i class="glyphicon glyphicon-edit"></i>
-                                        </button>
                                         <button class="btn btn-xs btn-danger" title="删除">
                                             <i class="glyphicon glyphicon-remove"></i>
                                         </button>
@@ -134,7 +131,7 @@
         ids=[];
         ips=[];
         $.ajax({
-            url: '/host/update',
+            url: '{{ SITE_URL }}'+'/host/update',
             type: 'POST',
             data:{
                 'biz_id': $('.ele').val(),
@@ -153,9 +150,6 @@
                         "<td class=\"ip\" name=\"hostip\" value=" + ele.ip + ">" + ele.ip + "</td>\n" +
                         "<td class=\"os\" name=\"hostos\" value=" + ele.os + ">" + ele.os + "</td>\n" +
                         "<td>\n" +
-                        "<button class=\"btn btn-xs btn-primary\" title=\"编辑\">\n" +
-                        "<i class=\"glyphicon glyphicon-edit\"></i>\n" +
-                        "</button>\n" +
                         "<button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
                         "<i class=\"glyphicon glyphicon-remove\"></i>\n" +
                         "</button>\n" +
@@ -179,7 +173,6 @@
         {#console.log(ips)#}
     });
 
-
     {#$("input.hostidall").change(function() {#}
     {#    if (this.checked) {#}
     {#        $("input:checkbox:checked").each(function() {#}
@@ -197,7 +190,7 @@
 
     $('.king-success').click(function () {
         $.ajax({
-            url: '/execute/',
+            url: '{{ SITE_URL }}'+'/execute/',
             type: 'POST',
             data:{
                 "biz_id":$('.ele').val(),
@@ -227,6 +220,32 @@
         });
         d.show();
     });
+</script>
+<script type="text/javascript">
+    $('#table_demo2').find('input[name="checkall"]').click(function(){
+            var checked = $(this).prop('checked');
+            $('#table_demo2>tbody input').prop('checked', checked);
+        });
+        $('#table_demo2').find(':checkbox').on('click', function(){
+            if(!this.checked){
+                $('#table_demo2').find('input[name="checkall"]').prop('checked',false);
+            }
+        });
+        $('#table_demo2').find('.glyphicon-remove').parent('button').click(function(){
+            if(confirm('确定要删除？')){
+                $(this).closest('tr').remove();
+            }
+        });
+        $('#deleteAll').click(function(event) {
+            var records = $('#table_demo2>tbody input:checked').closest('tr');
+            if (!records.length){
+                alert('请选择要删除的记录！');
+                return false;
+            }
+            if(confirm('确定要删除？')){
+                records.remove();
+            }
+        });
 </script>
         </div>
     </div>

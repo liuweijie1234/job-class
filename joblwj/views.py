@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json, base64, datetime, time, copy
+from datetime import datetime
 from joblwj.celery_tasks import async_status
 from celery.task import task
 from django.shortcuts import render
@@ -39,7 +40,7 @@ def ser_host(biz_id):
                 "ip": host_info['host']['bk_host_innerip'],
                 "os": host_info['host']["bk_os_name"],
                 "host_id": host_info['host']["bk_host_id"],
-                "cloud_id": host_info['host']["bk_cloud_id"]
+                "cloud_id": host_info['host']["bk_cloud_id"][0]["id"]
             })
     return hosts
 
@@ -84,7 +85,6 @@ def execute_script(request):
         # job_id = data['job_instance_id']
         # kwargs2 = {"bk_biz_id": biz_id,
         #            'job_instance_id': job_id}
-
         async_status.apply_async(args=[client, data, biz_id, obj, ip_id], kwargs={})
         # job_data = async_status.apply_async(args=[client], kwargs=kwargs2)
         # # job_data = client.job.get_job_instance_status(kwargs2)
@@ -111,7 +111,6 @@ def execute_script(request):
         #     jobid=job_id,
         #     status=status
         # )
-
     except Exception as err:
         data = []
         result = False
@@ -144,14 +143,24 @@ def record(request):
 
 
 def inquiry(request):
+    # 根据前端返回的数据进行查询
     try:
         biz_id = request.POST.get('biz_id')
         username = request.POST.get('username')
         script_id = request.POST.get('script_id')
         time = request.POST.get('time')  #"2020/03/27 - 2020/03/27"
-        data = [biz_id, username, script_id, time]
+        doinfo = Doinfo.objects.all()
+        doinfo = doinfo.filter(businessname=int(biz_id)).filter(username=username).filter(script_id=int(script_id))
+        starttime, endtime = time.split('-')
+        starttime = starttime.strip().replace('/', '-') + ' 00:00:00'
+        endtime = endtime.strip().replace('/', '-') + ' 23:59:00'
+        start_time = datetime.strptime(starttime, '%Y-%m-%d %H:%M:%S')
+        end_time = datetime.strptime(endtime, '%Y-%m-%d %H:%M:%S')
+        doinfo = doinfo.filter(starttime__range=(start_time, end_time))
+        data = [info.to_dict() for info in doinfo]
+        # print(data)
         result = True
-        message = "update success"
+        message = "success"
     except Exception as err:
         data = []
         result = False

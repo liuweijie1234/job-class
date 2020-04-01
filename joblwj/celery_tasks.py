@@ -97,8 +97,7 @@ def async_status(client, data, biz_id, obj, ip_id):
         Doinfo.objects.create(
             businessname=biz_id,
             username='admin',
-            scriptname=obj,
-            scriptcontent=obj.scriptcontent,
+            script=obj,
             createtime=create_time,
             starttime=start_time,
             endtime=end_time,

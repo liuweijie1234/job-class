@@ -9,8 +9,8 @@ class Script(admin.ModelAdmin):
     search_fields = ['scriptname', 'scriptcontent']
 
 class Info(admin.ModelAdmin):
-    list_display = ['businessname', 'username', 'scriptname', 'scriptcontent', 'starttime', 'ipcount', 'status']
-    search_fields = ['businessname', 'username', 'scriptname']
+    list_display = ['businessname', 'username', 'script', 'starttime', 'ipcount', 'status']
+    search_fields = ['businessname', 'username']
     date_hierarchy = 'starttime'
 
 

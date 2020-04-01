@@ -41,3 +41,7 @@ try:
     from local_settings import *  # noqa
 except ImportError:
     pass
+
+import os
+os.environ["http_proxy"] = "127.0.0.1:12639"
+os.environ["https_proxy"] = "127.0.0.1:12639"

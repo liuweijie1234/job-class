@@ -131,7 +131,7 @@
         ids=[];
         ips=[];
         $.ajax({
-            url: '{{ SITE_URL }}/host/update',
+            url: '{{ SITE_URL }}host/update',
             type: 'POST',
             data:{
                 'biz_id': $('.ele').val(),
@@ -190,7 +190,7 @@
 
     $('.king-success').click(function () {
         $.ajax({
-            url: '{{ SITE_URL }}/execute/',
+            url: '{{ SITE_URL }}execute/',
             type: 'POST',
             data:{
                 "biz_id":$('.ele').val(),

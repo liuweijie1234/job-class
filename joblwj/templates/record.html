@@ -49,8 +49,9 @@
                                 <img src="https://magicbox.bk.tencent.com/static_api/v3/bk/images/logo.png" class="logo"> </a>
                         </div>
                         <ul class="nav navbar-nav pull-left m0">
-                            <li ><a href="{{ SITE_URL }}tasks">执行任务</a></li>
+                            <li><a href="{{ SITE_URL }}tasks">执行任务</a></li>
                             <li class="active"><a href="{{ SITE_URL }}record">任务记录</a></li>
+                            <li><a href="{{ SITE_URL }}statistics">运营统计</a></li>
                         </ul>
                         <div class="navbar-header pull-right">
                             <ul class="nav">
@@ -136,8 +137,9 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+    </div>
 </body>
-
 <script type="text/javascript">
     $("#plugin4_demo11").click(function(){
     			var d = dialog({
@@ -165,7 +167,7 @@
 <script>
     $('.king-success').click(function () {
         $.ajax({
-            url: '{{ SITE_URL }}inquiry/',
+            url: '{{ SITE_URL }}api/inquiry/',
             type: 'POST',
             data:{
                 "biz_id":$('.ele').val(),

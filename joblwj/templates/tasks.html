@@ -50,6 +50,7 @@
                         <ul class="nav navbar-nav pull-left m0">
                             <li class="active"><a href="{{ SITE_URL }}tasks">执行任务</a></li>
                             <li><a href="{{ SITE_URL }}record">任务记录</a></li>
+                            <li><a href="{{ SITE_URL }}statistics">运营统计</a></li>
                         </ul>
                         <div class="navbar-header pull-right">
                             <ul class="nav">
@@ -93,6 +94,7 @@
                                 </th>
                                 <th style="width:100px">ID</th>
                                 <th style="width:25%">IP</th>
+                                <th style="width:25%">主机名</th>
                                 <th style="width:25%">操作系统</th>
                                 <th>操作</th>
                             </tr>
@@ -105,7 +107,8 @@
                                     </td>
                                     <td>{{ host.host_id }}</td>
                                     <td class="ip" name="hostip" value="{{ host.ip }}">{{ host.ip }}</td>
-                                    <td class="os" name="hostos" value="{{ host.os }}">{{ host.os }}</td>
+                                    <td>{{ host.name }}</td>
+                                    <td>{{ host.os }}</td>
                                     <td>
                                         <button class="btn btn-xs btn-danger" title="删除">
                                             <i class="glyphicon glyphicon-remove"></i>
@@ -116,7 +119,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </form>
             <form method="post" class="form-vertical p15 " style="width: 30%;">
                 {% csrf_token %}
@@ -124,6 +126,8 @@
                     <button type="button" class="king-btn mr10 king-success" id="submit">执行</button>
                 </div>
             </form>
+        </div>
+    </div>
 <script>
     ids=[];
     ips=[];
@@ -131,7 +135,7 @@
         ids=[];
         ips=[];
         $.ajax({
-            url: '{{ SITE_URL }}host/update',
+            url: '{{ SITE_URL }}api/get_host/',
             type: 'POST',
             data:{
                 'biz_id': $('.ele').val(),
@@ -148,7 +152,8 @@
                         "</td>\n" +
                         "<td>" + ele.host_id + "</td>\n" +
                         "<td class=\"ip\" name=\"hostip\" value=" + ele.ip + ">" + ele.ip + "</td>\n" +
-                        "<td class=\"os\" name=\"hostos\" value=" + ele.os + ">" + ele.os + "</td>\n" +
+                        "<td>" + ele.name + "</td>\n" +
+                        "<td>" + ele.os + "</td>\n" +
                         "<td>\n" +
                         "<button class=\"btn btn-xs btn-danger\" title=\"删除\">\n" +
                         "<i class=\"glyphicon glyphicon-remove\"></i>\n" +
@@ -166,7 +171,7 @@
     $(document).on('change','input.hostid',function (event) {
         $('input:checkbox:checked').each(function() {});
         ips.push($(this).val());
-        console.log(ips)
+        console.log(ips);
         {#$('td.ip').each(function() {});#}
         {#console.log($(this).val());#}
         {#ips.push($(this).val());#}
@@ -190,7 +195,7 @@
 
     $('.king-success').click(function () {
         $.ajax({
-            url: '{{ SITE_URL }}execute/',
+            url: '{{ SITE_URL }}api/execute/',
             type: 'POST',
             data:{
                 "biz_id":$('.ele').val(),
@@ -247,8 +252,5 @@
             }
         });
 </script>
-        </div>
-    </div>
 </body>
-
 </html>

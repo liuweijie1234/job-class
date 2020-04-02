@@ -40,6 +40,7 @@ def ser_host(biz_id):
                 "ip": host_info['host']['bk_host_innerip'],
                 "os": host_info['host']["bk_os_name"],
                 "host_id": host_info['host']["bk_host_id"],
+                "name": host_info['host']['bk_host_name'],
                 "cloud_id": host_info['host']["bk_cloud_id"][0]["id"]
             })
     return hosts
@@ -168,3 +169,11 @@ def inquiry(request):
     return JsonResponse({"result": result, "message": message, "data": data})
 
 
+def statistics(request):
+    doinfos = Doinfo.objects.all()
+    data = []
+    return render(request, 'statistics.html')
+
+
+def test(request):
+    return JsonResponse({"result": True, "message": "hello", "data": "world"})

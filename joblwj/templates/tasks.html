@@ -64,8 +64,9 @@
                     </div>
                 </div>
             </nav>
+
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
-                <div class="form-group ">
+                <div class="form-group">
                     <label>选择业务：</label>
                     <select class="form-control ele" id="biz_id">
                         {% for biz_name, biz_id in info %}
@@ -75,7 +76,7 @@
                 </div>
             </form>
             <form class="form-vertical p15 m5 fl" style="width: 20%;">
-                <div class="form-group ">
+                <div class="form-group">
                     <label>选择脚本：</label>
                     <select class="form-control ele1" id="script_id">
                         {% for task in tasks %}
@@ -100,15 +101,15 @@
                             </tr>
                         </thead>
                         <tbody class="host" id="td">
-                            {% for host in data %}
+                            {% for hosts in data %}
                                 <tr>
                                     <td>
-                                        <input class="hostid" name="checked" type="checkbox" value="{{ host.ip }}">
+                                        <input class="hostid" name="checked" type="checkbox" value="{{ hosts.ip }}">
                                     </td>
-                                    <td>{{ host.host_id }}</td>
-                                    <td class="ip" name="hostip" value="{{ host.ip }}">{{ host.ip }}</td>
-                                    <td>{{ host.name }}</td>
-                                    <td>{{ host.os }}</td>
+                                    <td>{{ hosts.host_id }}</td>
+                                    <td>{{ hosts.ip }}</td>
+                                    <td>{{ hosts.name }}</td>
+                                    <td>{{ hosts.os }}</td>
                                     <td>
                                         <button class="btn btn-xs btn-danger" title="删除">
                                             <i class="glyphicon glyphicon-remove"></i>
@@ -139,7 +140,6 @@
             type: 'POST',
             data:{
                 'biz_id': $('.ele').val(),
-                "script_id":$('.ele1').val(),
                 'csrfmiddlewaretoken': "{{ csrf_token }}"
             },
             success: function(response) {
@@ -151,7 +151,7 @@
                         "<input class=\"hostid\" name=\"checked\" type=\"checkbox\" value=" + ele.ip + ">\n" +
                         "</td>\n" +
                         "<td>" + ele.host_id + "</td>\n" +
-                        "<td class=\"ip\" name=\"hostip\" value=" + ele.ip + ">" + ele.ip + "</td>\n" +
+                        "<td>" + ele.ip + "</td>\n" +
                         "<td>" + ele.name + "</td>\n" +
                         "<td>" + ele.os + "</td>\n" +
                         "<td>\n" +
@@ -168,7 +168,7 @@
         })
     });
 
-    $(document).on('change','input.hostid',function (event) {
+    $(document).on('change','input.hostid',function () {
         $('input:checkbox:checked').each(function() {});
         ips.push($(this).val());
         console.log(ips);
@@ -239,16 +239,6 @@
         $('#table_demo2').find('.glyphicon-remove').parent('button').click(function(){
             if(confirm('确定要删除？')){
                 $(this).closest('tr').remove();
-            }
-        });
-        $('#deleteAll').click(function(event) {
-            var records = $('#table_demo2>tbody input:checked').closest('tr');
-            if (!records.length){
-                alert('请选择要删除的记录！');
-                return false;
-            }
-            if(confirm('确定要删除？')){
-                records.remove();
             }
         });
 </script>

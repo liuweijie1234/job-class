@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json, base64, datetime, time, copy
+import json, base64, datetime, time, copy, logging
 from datetime import datetime
 from joblwj.celery_tasks import async_status
 from celery.task import task
@@ -13,29 +13,33 @@ from blueapps.patch.settings_open_saas import SITE_URL
 # 装饰器引入 from blueapps.account.decorators import login_exempt
 
 client = get_client_by_user("admin")
+logger = logging.getLogger(__name__)
 
 
 # 查询业务
 def get_biz_info():
-    result = client.cc.search_business()
-    if result['data']['info']:
-        biz_name = []
-        biz_id = []
-        info = {}
-        for i in result['data']['info']:
+    res = client.cc.search_business()
+    biz_name = []
+    biz_id = []
+    info = {}
+    if res.get('result', False):
+        for i in res['data']['info']:
             biz_name.append(i['bk_biz_name'])
             biz_id.append(i['bk_biz_id'])
             info = dict(zip(biz_name, biz_id))
-        return info
+    else:
+        logger.error(u'请求业务列表失败：%s' % res.get('message'))
+        info = {}
+    return info
 
 
 # 根据条件查询主机
 def ser_host(biz_id):
     kwargs = {"bk_biz_id": biz_id}
-    result = client.cc.search_host(kwargs)
+    res = client.cc.search_host(kwargs)
     hosts = []
-    if result['data']['info']:
-        for host_info in result['data']['info']:
+    if res.get('result', False):
+        for host_info in res['data']['info']:
             hosts.append({
                 "ip": host_info['host']['bk_host_innerip'],
                 "os": host_info['host']["bk_os_name"],
@@ -43,6 +47,9 @@ def ser_host(biz_id):
                 "name": host_info['host']['bk_host_name'],
                 "cloud_id": host_info['host']["bk_cloud_id"][0]["id"]
             })
+    else:
+        logger.error(u'查询主机列表失败：%s' % res.get('message'))
+        hosts = []
     return hosts
 
 
@@ -143,8 +150,8 @@ def record(request):
     return render(request, 'record.html', data)
 
 
+# 根据前端返回的数据进行查询
 def inquiry(request):
-    # 根据前端返回的数据进行查询
     try:
         biz_id = request.POST.get('biz_id')
         username = request.POST.get('username')

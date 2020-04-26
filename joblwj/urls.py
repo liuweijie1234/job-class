@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
-from joblwj import views
+from . import views
 
 
 urlpatterns = (

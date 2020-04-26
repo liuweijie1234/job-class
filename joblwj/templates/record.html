@@ -83,7 +83,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>选择作业：</label>
+                    <label>选择脚本：</label>
                     <select class="form-control  ele2" style="width: 25%;">
                         {% for task in tasks %}
                             <option value={{ task.id }}>{{ task.scriptname }}</option>
@@ -114,7 +114,7 @@
                         <th>操作时间</th>
                         <th>机器数</th>
                         <th>状态</th>
-                        <th>参数</th>
+                        <th>脚本内容</th>
                         <th>详情</th>
                         <th>日志</th>
                     </tr>

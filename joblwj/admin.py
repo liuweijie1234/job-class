@@ -8,6 +8,7 @@ class Script(admin.ModelAdmin):
     list_display = ['scriptname', 'scriptcontent']
     search_fields = ['scriptname', 'scriptcontent']
 
+
 class Info(admin.ModelAdmin):
     list_display = ['businessname', 'username', 'jobid', 'script', 'starttime', 'ipcount', 'status']
     search_fields = ['businessname', 'username', 'script', 'jobid']
